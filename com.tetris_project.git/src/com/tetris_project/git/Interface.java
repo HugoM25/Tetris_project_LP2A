@@ -38,7 +38,7 @@ public class Interface extends Game1{
     	label = new JLabel("TETRIS GAME", JLabel.CENTER);
     	label1 = new JLabel("Choose a difficulty :", JLabel.CENTER);
     	label2 = new JLabel("RULES", JLabel.CENTER);
-    	label3 = new JLabel("<html>Tetris is primarily made up of a field of play in which pieces of various geometric shapes, known as\r\n"
+    	label3 = new JLabel("<html>				Tetris is primarily made up of a field of play in which pieces of various geometric shapes, known as\r\n"
     			+ "“tetrominoes (made of four connected squares)”, descend from the top of the field. During this\r\n"
     			+ "descent, you can move and rotate the pieces until they reach the bottom of the field or land on\r\n"
     			+ "a piece that was placed before it. You can neither slow down nor stop the falling pieces, but\r\n"
