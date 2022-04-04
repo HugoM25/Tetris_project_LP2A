@@ -138,6 +138,7 @@ public class Interface extends Game1{
 		difficulty.add(rb);
 		panel2.add(rb);
 		rb.setBackground(Color.ORANGE);
+		
 		rb.setFont(new Font("Serif", Font.BOLD, 20));
 	}
 }
