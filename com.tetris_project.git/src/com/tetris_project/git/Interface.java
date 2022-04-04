@@ -21,6 +21,7 @@ public class Interface extends Game1{
     	frules = new JFrame("RULES");
     	setF(frame);
     	frame.setSize(350, 350);
+    	frame.setLayout(new GridLayout(5, 1));
     	setF(frules);
     	frules.setSize(500, 500);
 
@@ -36,9 +37,7 @@ public class Interface extends Game1{
     	label = new JLabel("TETRIS GAME", JLabel.CENTER);
     	label1 = new JLabel("Choose a difficulty :", JLabel.CENTER);
     	label2 = new JLabel("RULES", JLabel.CENTER);
-    	label3 = new JLabel("<html>				Tetris is primarily made up of a field of play in which pieces of various geometric shapes, known as\r\n"
-    			+ "“tetrominoes (made of four connected squares)”, descend from the top of the field. During this\r\n"
-    			+ "descent, you can move and rotate the pieces until they reach the bottom of the field or land on\r\n"
+    	label3 = new JLabel("<html>Tetris is primarily made up of a field of play in which pieces of various geometric shapes, known as “tetrominoes (made of four connected squares)”, descend from the top of the field. During this descent, you can move and rotate the pieces until they reach the bottom of the field or land on\r\n"
     			+ "a piece that was placed before it. You can neither slow down nor stop the falling pieces, but\r\n"
     			+ "they can be accelerated. The goal of the game is to create as many horizontal lines of blocks as possible\r\n"
     			+ "using the pieces. When a line is finished, it vanishes, and the blocks above it fall one rank. Completing\r\n"
@@ -72,7 +71,7 @@ public class Interface extends Game1{
         panel1.add(rulesB);
 
         // Set the color and the font
-        frame.getContentPane().setBackground(Color.ORANGE);
+        //frame.getContentPane().setBackground(Color.decode("#77E4B4"));
         
         label.setFont(new Font("Serif", Font.BOLD, 40));
         label1.setFont(new Font("Serif", Font.BOLD, 20)); 
@@ -96,6 +95,7 @@ public class Interface extends Game1{
         rulesB.addActionListener( new ActionListener()	{
     		public void actionPerformed(ActionEvent ae) {
 
+    			frules.setLayout(new GridLayout(3, 1));
     		    frules.setVisible(true);
     		    frame.setVisible(false);
     		    
@@ -103,7 +103,6 @@ public class Interface extends Game1{
     		    frules.add(label3);
     		    frules.add(panel3);
     		    panel3.add(returnB);
-    		    
     		    
     		}
     	});
@@ -122,12 +121,11 @@ public class Interface extends Game1{
 		f.pack();
 		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	    f.setLocationRelativeTo(null);
-	    f.setLayout(new GridLayout(5, 1));
-	    f.getContentPane().setBackground(Color.ORANGE);
+	    f.getContentPane().setBackground(Color.decode("#77E4B4"));
 	}
 	
 	public void setP(JPanel p) {
-		p.setBackground(Color.ORANGE);
+		p.setBackground(Color.decode("#77E4B4"));
 	}
 	
 	public void setB(JButton b) {
@@ -137,8 +135,12 @@ public class Interface extends Game1{
 	public void setRB(JRadioButton rb) {
 		difficulty.add(rb);
 		panel2.add(rb);
+<<<<<<< Upstream, based on branch 'master' of https://github.com/HugoM25/Tetris_project_LP2A.git
 		rb.setBackground(Color.ORANGE);
 		
+=======
+		rb.setBackground(Color.decode("#77E4B4"));
+>>>>>>> b7c6e38 color change
 		rb.setFont(new Font("Serif", Font.BOLD, 20));
 	}
 }
