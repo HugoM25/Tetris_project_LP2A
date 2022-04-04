@@ -2,13 +2,13 @@ package com.tetris_project.git;
 
 import javax.swing.*;
 
-import TETRIS.Game;
+
 
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class Interface extends Game{
+public class Interface extends Game1{
 	
 	private JFrame frame, frules;
     private JLabel label, label1, label2, label3;
