@@ -38,7 +38,7 @@ public class Interface extends Game1{
     	label = new JLabel("TETRIS GAME", JLabel.CENTER);
     	label1 = new JLabel("Choose a difficulty :", JLabel.CENTER);
     	label2 = new JLabel("RULES", JLabel.CENTER);
-    	label3 = new JLabel("Tetris is primarily made up of a field of play in which pieces of various geometric shapes, known as\r\n"
+    	label3 = new JLabel("<html>Tetris is primarily made up of a field of play in which pieces of various geometric shapes, known as\r\n"
     			+ "“tetrominoes (made of four connected squares)”, descend from the top of the field. During this\r\n"
     			+ "descent, you can move and rotate the pieces until they reach the bottom of the field or land on\r\n"
     			+ "a piece that was placed before it. You can neither slow down nor stop the falling pieces, but\r\n"
@@ -48,7 +48,7 @@ public class Interface extends Game1{
     			+ "increases the number of points granted per completed line. If you cannot make the blocks\r\n"
     			+ "disappear quickly enough, the field will start to fill, and when the pieces reach the top of the field and\r\n"
     			+ "prevent the arrival of additional pieces, the game ends. At the end of each game, you receives a\r\n"
-    			+ "score based on the number of lines that have been completed.");
+    			+ "score based on the number of lines that have been completed.</html>");
     	
     	// Define buttons
     	playB = new JButton(" Play ");
