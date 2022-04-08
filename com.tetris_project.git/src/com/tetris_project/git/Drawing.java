@@ -19,7 +19,7 @@ public class Drawing extends Canvas{
 		
 		myGame = new Game(); 
 		
-		for (int j = 0; j < 18; j++) {
+		for (int j = 0; j < 19; j++) {
 			myGame.Update();
 		}
 	    

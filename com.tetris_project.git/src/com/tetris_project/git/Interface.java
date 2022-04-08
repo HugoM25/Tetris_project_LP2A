@@ -102,8 +102,8 @@ public class Interface extends Game1{
     		    frame.add(canvas);
     		    frame.pack();
     		    frame.setVisible(true);
-    		    
-    		    new Drawing().paint(null);
+    		    Graphics g = canvas.getGraphics();
+    		    canvas.paint(g);
     		    
     		}
     	});

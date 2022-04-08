@@ -5,11 +5,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 import tetrominoes.IStyle;
+import tetrominoes.JStyle;
+import tetrominoes.SStyle;
 import tetrominoes.TStyle;
 import tetrominoes.Tetromino;
 
 public class Game {
 	
+	//Data 
+	
+	//Used for the game
 	private int[][] grid; 
 	private Tetromino tetromino; 
 	
@@ -20,6 +25,7 @@ public class Game {
 	public void setTetromino(Tetromino tetromino) {
 		this.tetromino = tetromino;
 	}
+	
 	
 	public Game(int[][] grid, Tetromino tetromino) {
 		this.grid = grid;
@@ -41,7 +47,9 @@ public class Game {
 	public void setGrid(int[][] grid) {
 		this.grid = grid;
 	}
-	
+	public void spawnNewTetromino() {
+		
+	}
 	public boolean isPiecePosOk(Tetromino tetromino, Vector2D deplacement) {
 		
 		//For every square of the piece
@@ -73,7 +81,7 @@ public class Game {
 					}
 				}
 			}
-			this.displayGridValue();
+
 		}
 		
 	}
@@ -91,7 +99,7 @@ public class Game {
 				for (int k = 0; k < this.tetromino.arrayPiece[this.tetromino.orientation][j].length; k++) {
 					//If it is a used piece square 
 					if (this.tetromino.arrayPiece[this.tetromino.orientation][j][k] != 0) {
-						if (k+this.tetromino.position.getY()>0 && k+this.tetromino.position.getY()<gridDisplay.length) {
+						if (k+this.tetromino.position.getY()>=0 && k+this.tetromino.position.getY()<gridDisplay.length) {
 							gridDisplay[j+this.tetromino.position.getX()][k+this.tetromino.position.getY()] = 1; 
 						}
 						
@@ -166,10 +174,11 @@ public class Game {
 			}
 		}
 		else {
-			//Create a new tetromino
-			this.tetromino = new IStyle(); 
-			this.tetromino.position.setX(5);
-			this.tetromino.position.setY(3);
+			//Spawn a new tetromino
+			this.tetromino = new JStyle(); 
+			this.tetromino.Rotate(-1);
+			this.tetromino.position.setX(2);
+			this.tetromino.position.setY(5);
 		}
 	}
 
