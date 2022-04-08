@@ -85,13 +85,16 @@ public class Game {
 			System.arraycopy(this.grid[i], 0, gridDisplay[i], 0, this.grid[i].length);
 		}
 		//Place the manipulated tetromino in the grid
-		if (this.tetromino != null && this.isPiecePosOk(this.tetromino, new Vector2D(0,0))) {
+		if (this.tetromino != null ) {
 			
 			for (int j = 0; j < this.tetromino.arrayPiece[this.tetromino.orientation].length; j++) {
 				for (int k = 0; k < this.tetromino.arrayPiece[this.tetromino.orientation][j].length; k++) {
-					
+					//If it is a used piece square 
 					if (this.tetromino.arrayPiece[this.tetromino.orientation][j][k] != 0) {
-						gridDisplay[j+this.tetromino.position.getX()][k+this.tetromino.position.getY()] = 1; 
+						if (k+this.tetromino.position.getY()>0 && k+this.tetromino.position.getY()<gridDisplay.length) {
+							gridDisplay[j+this.tetromino.position.getX()][k+this.tetromino.position.getY()] = 1; 
+						}
+						
 					}
 				}
 			}

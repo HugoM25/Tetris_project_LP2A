@@ -84,13 +84,7 @@ public class Interface extends Game1{
         
         setB(playB);
         setB(rulesB);
-        setB(returnB);
-        
-        setRB(radio1);
-        setRB(radio2);
-        setRB(radio3);
-        setRB(radio4);
-        setRB(radio5);
+
    
         rulesB.addActionListener( new ActionListener()	{
     		public void actionPerformed(ActionEvent ae) {
@@ -132,15 +126,5 @@ public class Interface extends Game1{
 		b.setFont(new Font("Serif", Font.BOLD, 20));
 	}
 	
-	public void setRB(JRadioButton rb) {
-		difficulty.add(rb);
-		panel2.add(rb);
-<<<<<<< Upstream, based on branch 'master' of https://github.com/HugoM25/Tetris_project_LP2A.git
-		rb.setBackground(Color.ORANGE);
-		
-=======
-		rb.setBackground(Color.decode("#77E4B4"));
->>>>>>> b7c6e38 color change
-		rb.setFont(new Font("Serif", Font.BOLD, 20));
-	}
+
 }

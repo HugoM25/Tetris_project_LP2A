@@ -3,19 +3,21 @@ import java.awt.Canvas;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+import java.awt.event.MouseMotionListener;
 
 import javax.swing.JFrame;
 
-public class Drawing extends Canvas{
+public class Drawing extends Canvas {
 	public static Game myGame; 
 	
 	public static void main(String[] args) {
 		
 		myGame = new Game(); 
 		
-		for (int j = 0; j < 18; j++) {
-			myGame.Update();
-		}
 		// TODO Auto-generated method stub
 		 
 		JFrame frame = new JFrame("My Drawing");
@@ -24,6 +26,11 @@ public class Drawing extends Canvas{
         frame.add(canvas);
         frame.pack();
         frame.setVisible(true);
+        
+		for (int j = 0; j < 18; j++) {
+			myGame.Update();
+
+		}
 	}
 	
 	public void paint(Graphics g) {
@@ -53,5 +60,4 @@ public class Drawing extends Canvas{
         	}
         }
 	}
-
 }
