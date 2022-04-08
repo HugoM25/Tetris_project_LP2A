@@ -5,7 +5,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class Interface extends Game1{
+public class Interface extends Game{
 	
 	private JFrame frame, frules;
     private JLabel label, label1, label2, label3;

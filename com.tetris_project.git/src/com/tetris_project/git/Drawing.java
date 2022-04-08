@@ -13,11 +13,11 @@ import javax.swing.JFrame;
 
 public class Drawing extends Canvas{
 	
-	public static Game myGame; 
+	public static GameSystem myGame; 
 	
 	public void paint(Graphics g) {
 		
-		myGame = new Game(); 
+		myGame = new GameSystem(); 
 		
 		for (int j = 0; j < 19; j++) {
 			myGame.Update();
