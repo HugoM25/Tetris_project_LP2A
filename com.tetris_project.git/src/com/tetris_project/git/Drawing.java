@@ -15,7 +15,7 @@ public class Drawing extends Canvas{
 	
 	public static Game myGame; 
 	
-public void paint(Graphics g) {
+	public void paint(Graphics g) {
 		
 		myGame = new Game(); 
 		
