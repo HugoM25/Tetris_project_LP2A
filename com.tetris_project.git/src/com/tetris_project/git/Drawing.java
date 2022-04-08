@@ -7,26 +7,18 @@ import java.awt.Graphics2D;
 import javax.swing.JFrame;
 
 public class Drawing extends Canvas{
+	
 	public static Game myGame; 
 	
-	public static void main(String[] args) {
+	public void paint(Graphics g) {
 		
 		myGame = new Game(); 
 		
 		for (int j = 0; j < 18; j++) {
 			myGame.Update();
 		}
-		// TODO Auto-generated method stub
-		 
-		JFrame frame = new JFrame("My Drawing");
-        Canvas canvas = new Drawing();
-        canvas.setSize(400, 400);
-        frame.add(canvas);
-        frame.pack();
-        frame.setVisible(true);
-	}
-	
-	public void paint(Graphics g) {
+	    
+	    
 	    Graphics2D graphic2d = (Graphics2D) g;
 	    int[][] gridDisplay = myGame.gridToDisplay(); 
 	    int size = 30; 
