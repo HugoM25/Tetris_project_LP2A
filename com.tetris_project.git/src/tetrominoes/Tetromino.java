@@ -31,9 +31,8 @@ public class Tetromino {
 		}
 		//Rotate 
 		this.orientation = rotaTest; 
-	}
+	}	
 	public void Move(Vector2D direction) {
 		position.add(direction);
 	}
-	
 }

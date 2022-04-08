@@ -13,19 +13,23 @@ import javax.swing.JFrame;
 
 public class Drawing extends Canvas{
 	
-	public static GameSystem myGame; 
+	public int[][] gridDisplay;
 	
+
+	public int[][] getGridDisplay() {
+		return gridDisplay;
+	}
+
+
+	public void setGridDisplay(int[][] gridDisplay) {
+		this.gridDisplay = gridDisplay;
+	}
+
+
 	public void paint(Graphics g) {
-		
-		myGame = new GameSystem(); 
-		
-		for (int j = 0; j < 19; j++) {
-			myGame.Update();
-		}
-	    
-	    
+
 	    Graphics2D graphic2d = (Graphics2D) g;
-	    int[][] gridDisplay = myGame.gridToDisplay(); 
+	    int[][] gridDisplay = this.gridDisplay; 
 	    int size = 30; 
 	    for (int i = 0; i < gridDisplay.length; i++) {
         	for (int j = 0; j < gridDisplay[i].length; j++) {
@@ -49,5 +53,7 @@ public class Drawing extends Canvas{
 
         	}
         }
+	    
 	}
+
 }
