@@ -30,29 +30,31 @@ public class Drawing extends Canvas{
 
 	    Graphics2D graphic2d = (Graphics2D) g;
 	    int[][] gridDisplay = this.gridDisplay; 
-	    int size = 30; 
-	    for (int i = 0; i < gridDisplay.length; i++) {
-        	for (int j = 0; j < gridDisplay[i].length; j++) {
-        	
-        		switch(gridDisplay[i][j]) {
-        			case 0:
-        				graphic2d.setColor(Color.GRAY);
-        				graphic2d.fillRect(i*size, j*size, size, size);
-        				
-        				graphic2d.setColor(Color.BLACK);
-                		graphic2d.drawRect(i*size, j*size, size, size);
-        				break; 
-        			case 1:
-        				graphic2d.setColor(Color.ORANGE);
-        				graphic2d.fillRect(i*size, j*size, size, size);
-        				break; 
-        			default :
-        				break; 
-        		}
-        		
 
-        	}
-        }
+	    if (gridDisplay != null) {
+	    
+	    	int size = 30;
+		    for (int i = 0; i < gridDisplay.length; i++) {
+	        	for (int j = 0; j < gridDisplay[i].length; j++) {
+	        	
+	        		switch(gridDisplay[i][j]) {
+	        			case 0:
+	        				graphic2d.setColor(Color.GRAY);
+	        				graphic2d.fillRect(i*size, j*size, size, size);
+	        				
+	        				graphic2d.setColor(Color.BLACK);
+	                		graphic2d.drawRect(i*size, j*size, size, size);
+	        				break; 
+	        			case 1:
+	        				graphic2d.setColor(Color.ORANGE);
+	        				graphic2d.fillRect(i*size, j*size, size, size);
+	        				break; 
+	        			default :
+	        				break; 
+	        		}
+	        	}
+	        }
+	    }
 	    
 	}
 

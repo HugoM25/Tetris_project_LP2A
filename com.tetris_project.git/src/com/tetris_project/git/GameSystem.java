@@ -99,7 +99,7 @@ public class GameSystem {
 				for (int k = 0; k < this.tetromino.arrayPiece[this.tetromino.orientation][j].length; k++) {
 					//If it is a used piece square 
 					if (this.tetromino.arrayPiece[this.tetromino.orientation][j][k] != 0) {
-						if (k+this.tetromino.position.getY()>=0 && k+this.tetromino.position.getY()<gridDisplay.length) {
+						if (k+this.tetromino.position.getY()>=0 && k+this.tetromino.position.getY()<gridDisplay[j].length) {
 							gridDisplay[j+this.tetromino.position.getX()][k+this.tetromino.position.getY()] = 1; 
 						}
 						
@@ -178,7 +178,7 @@ public class GameSystem {
 			this.tetromino = new JStyle(); 
 			this.tetromino.Rotate(-1);
 			this.tetromino.position.setX(2);
-			this.tetromino.position.setY(5);
+			this.tetromino.position.setY(-1);
 		}
 	}
 
