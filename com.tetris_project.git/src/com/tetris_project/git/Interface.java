@@ -29,10 +29,10 @@ public class Interface extends JFrame{
     public void InitializePlayFrame() {
     	playFrame = new JFrame("Tetris Game");
     	setF(playFrame);
-    	playFrame.setSize(700,700);
-    	canvas.setSize(700, 700);
+    	playFrame.setSize(700,634);
+    	canvas.setSize(700, 634);
 		canvas.setGridDisplay(null);
-	    playFrame.add(canvas); 
+	    playFrame.add(canvas);
     }
     
     public void RefreshPlayFrame(int[][] gridDisplay) {    	

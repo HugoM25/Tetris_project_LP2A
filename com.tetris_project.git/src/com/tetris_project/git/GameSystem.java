@@ -121,6 +121,10 @@ public class GameSystem {
 				indexesToBeRemoved.add(i); 
 			}
 		}
+		
+		//Update score
+		score(indexesToBeRemoved);
+		
 		return indexesToBeRemoved ;
 	}
 	public void removeLineFromGrid(int lineIndex) {
@@ -143,8 +147,7 @@ public class GameSystem {
 		}
 		
 		//Update grid
-		this.grid = gridTmp; 
-		
+		this.grid = gridTmp;
 	}
 	
 	public void displayGridValue() {
@@ -182,6 +185,20 @@ public class GameSystem {
 		}
 	}
 
-	
+	public int score(List<Integer> indexesToBeRemoved) {
+		
+		int score = 0;
+		int nblines = indexesToBeRemoved.size();
+		
+		switch (nblines) {
+			case 4:
+				score += 800;
+				break;
+			default:
+				score += nblines*100;
+		}
+		
+		return score;
+	}
 	
 }
