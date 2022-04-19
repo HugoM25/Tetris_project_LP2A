@@ -11,11 +11,13 @@ import java.awt.event.MouseMotionListener;
 
 import javax.swing.JFrame;
 
-public class Drawing extends Canvas{
+public class Drawing extends Canvas {
 	
 	public int[][] gridDisplay;
-	
+	public static final Color[] COLOR_PALETTE = { Color.WHITE, Color.GREEN, Color.BLUE, Color.RED, Color.PINK , Color.MAGENTA, Color.YELLOW, Color.CYAN}; 
+	public Drawing() {
 
+	}
 	public int[][] getGridDisplay() {
 		return gridDisplay;
 	}
@@ -36,26 +38,23 @@ public class Drawing extends Canvas{
 	    	int size = 30;
 		    for (int i = 0; i < gridDisplay.length; i++) {
 	        	for (int j = 0; j < gridDisplay[i].length; j++) {
-	        	
-	        		switch(gridDisplay[i][j]) {
-	        			case 0:
-	        				graphic2d.setColor(Color.GRAY);
-	        				graphic2d.fillRect(i*size, j*size, size, size);
-	        				
-	        				graphic2d.setColor(Color.BLACK);
-	                		graphic2d.drawRect(i*size, j*size, size, size);
-	        				break; 
-	        			case 1:
-	        				graphic2d.setColor(Color.ORANGE);
-	        				graphic2d.fillRect(i*size, j*size, size, size);
-	        				break; 
-	        			default :
-	        				break; 
+	        		if (gridDisplay[i][j] >= 1 && gridDisplay[i][j] <= 7) {
+	        			graphic2d.setColor(COLOR_PALETTE[gridDisplay[i][j]]);
+        				graphic2d.fillRect(i*size, j*size, size, size);
 	        		}
+	        		else {
+	        			graphic2d.setColor(Color.GRAY);
+        				graphic2d.fillRect(i*size, j*size, size, size);
+        				
+        				graphic2d.setColor(Color.BLACK);
+                		graphic2d.drawRect(i*size, j*size, size, size);
+	        		}
+	        		
 	        	}
 	        }
 	    }
 	    
 	}
+
 
 }

@@ -1,14 +1,13 @@
 package com.tetris_project.git;
 
 
+
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
-import tetrominoes.IStyle;
-import tetrominoes.JStyle;
-import tetrominoes.SStyle;
-import tetrominoes.TStyle;
-import tetrominoes.Tetromino;
+import tetrominoes.*;
+
 
 public class GameSystem {
 	
@@ -47,9 +46,7 @@ public class GameSystem {
 	public void setGrid(int[][] grid) {
 		this.grid = grid;
 	}
-	public void spawnNewTetromino() {
-		
-	}
+
 	public boolean isPiecePosOk(Tetromino tetromino, Vector2D deplacement) {
 		
 		//For every square of the piece
@@ -85,7 +82,16 @@ public class GameSystem {
 		}
 		
 	}
-	
+	public void moveTetroLeft() {
+		if (this.tetromino != null && this.isPiecePosOk(tetromino, new Vector2D(-1,0))) {
+			this.tetromino.position.add(new Vector2D(-1,0));
+		}
+	}
+	public void moveTetroRight() {
+		if (this.tetromino != null && this.isPiecePosOk(tetromino, new Vector2D(1,0))) {
+			this.tetromino.position.add(new Vector2D(1,0));
+		}
+	}
 	public int[][] gridToDisplay(){
 		//Copy grid to a new grid only for display
 		int[][] gridDisplay = new int[this.grid.length][this.grid[0].length];
@@ -100,7 +106,7 @@ public class GameSystem {
 					//If it is a used piece square 
 					if (this.tetromino.arrayPiece[this.tetromino.orientation][j][k] != 0) {
 						if (k+this.tetromino.position.getY()>=0 && k+this.tetromino.position.getY()<gridDisplay[j].length) {
-							gridDisplay[j+this.tetromino.position.getX()][k+this.tetromino.position.getY()] = 1; 
+							gridDisplay[j+this.tetromino.position.getX()][k+this.tetromino.position.getY()] = this.tetromino.colorIndex; 
 						}
 						
 					}
@@ -178,7 +184,7 @@ public class GameSystem {
 		}
 		else {
 			//Spawn a new tetromino
-			this.tetromino = new JStyle(); 
+			this.tetromino = generateNextTetromino(); 
 			this.tetromino.Rotate(-1);
 			this.tetromino.position.setX(2);
 			this.tetromino.position.setY(-1);
@@ -201,4 +207,35 @@ public class GameSystem {
 		return score;
 	}
 	
+	public Tetromino generateNextTetromino() {
+		Random rand = new Random();
+		int rand_perc = rand.nextInt(100);
+		if (rand_perc < 10) {
+			return new OStyle();
+		}
+		else if (rand_perc < 20) {
+			return new JStyle(); 
+		}
+		else if (rand_perc < 30) {
+			return new IStyle(); 
+		}
+		else if (rand_perc < 40) {
+			return new LStyle();
+		}
+		else if (rand_perc < 50) {
+			//Celui là est en double
+			return new OStyle(); 
+		}
+		else if (rand_perc < 60) {
+			return new SStyle();
+		}
+		else if (rand_perc < 70) {
+			return new TStyle(); 
+		}
+		else {
+			return new ZStyle(); 
+		}
+		
+	}
+
 }

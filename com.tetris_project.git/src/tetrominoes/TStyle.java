@@ -4,7 +4,9 @@ package tetrominoes;
 public class TStyle extends Tetromino {
 	
 	public TStyle() {
-		this.orientation = 0; 
+		super();
+		this.orientation = 0;
+		this.colorIndex = 6; 
 		InitializeGrid(); 
 	}
 	public void InitializeGrid() {
@@ -13,27 +15,27 @@ public class TStyle extends Tetromino {
 		//Place the blocks
 		
 		//Rotation 0 :
-		this.arrayPiece[0][0][1] = 1; 
-		this.arrayPiece[0][1][0] = 1; 
-		this.arrayPiece[0][1][1] = 1; 
-		this.arrayPiece[0][1][2] = 1; 
+		this.arrayPiece[0][0][1] = this.colorIndex; 
+		this.arrayPiece[0][1][0] = this.colorIndex; 
+		this.arrayPiece[0][1][1] = this.colorIndex; 
+		this.arrayPiece[0][1][2] = this.colorIndex; 
 		
 		//Rotation 1 :
-		this.arrayPiece[1][0][1] = 1; 
-		this.arrayPiece[1][1][1] = 1; 
-		this.arrayPiece[1][1][2] = 1; 
-		this.arrayPiece[1][2][1] = 1; 
+		this.arrayPiece[1][0][1] = this.colorIndex; 
+		this.arrayPiece[1][1][1] = this.colorIndex; 
+		this.arrayPiece[1][1][2] = this.colorIndex; 
+		this.arrayPiece[1][2][1] = this.colorIndex; 
 		
 		//Rotation 2 :
-		this.arrayPiece[2][1][0] = 1; 
-		this.arrayPiece[2][1][1] = 1; 
-		this.arrayPiece[2][1][2] = 1; 
-		this.arrayPiece[2][2][1] = 1; 
+		this.arrayPiece[2][1][0] = this.colorIndex; 
+		this.arrayPiece[2][1][1] = this.colorIndex; 
+		this.arrayPiece[2][1][2] = this.colorIndex; 
+		this.arrayPiece[2][2][1] = this.colorIndex; 
 		
 		//Rotation 3 :
-		this.arrayPiece[3][0][1] = 1; 
-		this.arrayPiece[3][1][0] = 1; 
-		this.arrayPiece[3][1][1] = 1; 
-		this.arrayPiece[3][2][1] = 1; 
+		this.arrayPiece[3][0][1] = this.colorIndex; 
+		this.arrayPiece[3][1][0] = this.colorIndex; 
+		this.arrayPiece[3][1][1] = this.colorIndex; 
+		this.arrayPiece[3][2][1] = this.colorIndex; 
 	}
 }

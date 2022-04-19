@@ -7,13 +7,13 @@ import java.awt.event.ActionListener;
 
 public class Interface extends JFrame{
 	
-	private JFrame frame, frules, playFrame;
+	public JFrame frame, frules, playFrame;
     private JLabel label, label1, label2, label3;
     private JPanel panel, panel1, panel2, panel3;
     private JButton playB, rulesB, returnB;
     private ButtonGroup difficulty;
     
-    private final Drawing canvas = new Drawing(); 
+    public final Drawing canvas = new Drawing(); 
     
     public Interface() {
     	InitializeFrames();
@@ -32,8 +32,10 @@ public class Interface extends JFrame{
     	playFrame.setSize(700,634);
     	canvas.setSize(700, 634);
 		canvas.setGridDisplay(null);
-	    playFrame.add(canvas);
-    }
+		playFrame.add(canvas);
+		canvas.requestFocus();
+		canvas.setFocusable(true);
+	}
     
     public void RefreshPlayFrame(int[][] gridDisplay) {    	
 		canvas.setGridDisplay(gridDisplay);
@@ -100,6 +102,7 @@ public class Interface extends JFrame{
     		public void actionPerformed(ActionEvent ae) {
     		    frame.setVisible(false);
     		    playFrame.setVisible(true);
+    		    canvas.requestFocus();
     		}
     	});
    
