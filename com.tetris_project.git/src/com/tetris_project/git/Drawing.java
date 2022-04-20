@@ -10,8 +10,9 @@ import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
 
 import javax.swing.JFrame;
+import javax.swing.JPanel;
 
-public class Drawing extends Canvas {
+public class Drawing extends JPanel {
 	
 	public int[][] gridDisplay;
 	public static final Color[] COLOR_PALETTE = { Color.WHITE, Color.GREEN, Color.BLUE, Color.RED, Color.PINK , Color.MAGENTA, Color.YELLOW, Color.CYAN}; 
