@@ -14,7 +14,8 @@ import javax.swing.SwingUtilities;
 public class Game implements KeyListener {
 	
 	private static Interface in; 
-	private static GameSystem sysGame; 
+	private static GameSystem sysGame;
+	private static int FPS = 60; 
 	
 	public Game() {
 		in = new Interface(); 
@@ -30,15 +31,25 @@ public class Game implements KeyListener {
 		sysGame.Update();
 	    
 	    Timer timer = new Timer();
+	    
 	    timer.schedule( new TimerTask() {
+	    	int counter =0; 
+	    	int counterMax = 60; 
+	    	
 	        public void run() {
 	        	
-	        	in.RefreshPlayFrame(sysGame.gridToDisplay());
+	        	in.RefreshPlayFrame(sysGame.showGrid());
 	        	
-	        	//System.out.println("updated");
-	        	sysGame.Update();
+	        	//Update game automatically every 60 frames --> 1 second 
+	        	if (counter > counterMax ) {
+	        		counter = 0;
+	        		sysGame.Update();
+	        	}
+	        	else {
+	        		counter++; 
+	        	}
 	        }
-	     }, 0, (long) (0.5f*1000));
+	     }, 0, (long) (1000/FPS));
 	    
 	}
 
@@ -62,9 +73,9 @@ public class Game implements KeyListener {
 			
 		}
 		else if (e.getKeyCode() == KeyEvent.VK_SPACE) {
-			sysGame.getTetromino().Rotate(1);
+			sysGame.rotateTetroLeft();
 		}
-		in.RefreshPlayFrame(sysGame.gridToDisplay());
+
 	}
 
 	public void keyReleased(KeyEvent e) {
