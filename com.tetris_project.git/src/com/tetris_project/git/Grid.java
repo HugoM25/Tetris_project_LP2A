@@ -74,7 +74,6 @@ public class Grid {
 		}
 		//Place the manipulated tetromino in the grid
 		if (tetromino != null ) {
-			
 			for (int j = 0; j < tetromino.arrayPiece[tetromino.orientation].length; j++) {
 				for (int k = 0; k < tetromino.arrayPiece[tetromino.orientation][j].length; k++) {
 					//If it is a used piece square 
@@ -91,20 +90,20 @@ public class Grid {
 	}
 	public void removeLineFromGrid(int lineIndex) {
 		//Remove line blocks
-		for( int k = 0; k < this.tab[lineIndex].length; k++ ) {
-			this.tab[lineIndex][k] = 0; 
+		for( int k = 0; k < this.width; k++ ) {
+			this.tab[k][lineIndex] = 0; 
 		}
 		//Make the other lines fall on this one
 		
 		//Copy grid
-		int[][] gridTmp = new int[this.tab.length][this.tab[0].length];
-		for (int i = 0; i < gridTmp.length; i++) {
-			System.arraycopy(this.tab[i], 0, gridTmp[i], 0, this.tab[i].length);
+		int[][] gridTmp = new int[this.width][this.height];
+		for (int i = 0; i < this.width; i++) {
+			System.arraycopy(this.tab[i], 0, gridTmp[i], 0, this.height);
 		}
 		//Modify grid
-		for (int i = 0; i < lineIndex; i++) {
-			for (int j = 0; j < this.tab[lineIndex].length; j++) {
-				
+		for (int i = 0; i < this.width; i++) {
+			for (int j = 0; j < lineIndex; j++) {
+				gridTmp[i][j+1] = this.tab[i][j]; 
 			}
 		}
 		
@@ -112,19 +111,19 @@ public class Grid {
 		this.tab = gridTmp;
 	}
 	public List<Integer> checkForLineToRemove() {
-		int j = 0;
+		int i = 0;
 		List<Integer> indexesToBeRemoved = new ArrayList<Integer>();  
 		//Check for every line if it has to be removed
 
 		//Need to fix the way we know the order of the grid
-		for(int i = 0; i < this.tab[0].length; i++) {
-			 
-			while (j < this.tab.length && this.tab[j][i] != 0) {
-				j++;
+		for(int j = 0; j < this.height; j++) {
+			i = 0; 
+			while (i < this.width && this.tab[i][j] != 0) {
+				i++;
 			}
 			
-			if (j >= this.tab.length) {
-				indexesToBeRemoved.add(i); 
+			if (i >= this.width) {
+				indexesToBeRemoved.add(j); 
 			}
 		}
 		

@@ -84,16 +84,21 @@ public class GameSystem {
 				this.tetromino = null; 
 				//Check for lines to remove 
 				List<Integer> indexes = grid.checkForLineToRemove();
+				for (int i = 0; i < indexes.size() ; i++) {
+					grid.removeLineFromGrid(indexes.get(i));
+				}
 				//Update score
 				addScoreLines(indexes);
+				
+				//Debug
 				grid.displayGridValue();
 			}
 		}
 		else {
 			//Spawn a new tetromino
-			//this.tetromino = generateNextTetromino(); 
+			this.tetromino = generateNextTetromino(); 
 			//Just for easier debug for the moment spawn t-style piece
-		    this.tetromino = new TStyle(); 
+		    //this.tetromino = new TStyle(); 
 			this.tetromino.position = new Vector2D(2,-1); 
 		}
 	}
