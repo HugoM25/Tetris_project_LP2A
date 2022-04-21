@@ -12,10 +12,12 @@ import tetrominoes.*;
 public class GameSystem {
 	
 	//Data 
-	
+	private int score; 
 	//Used for the game
 	private Grid grid; 
-	private Tetromino tetromino; 
+	private Tetromino tetromino;
+	private TetroQueue tetroQueue; 
+	public GameState state; 
 	
 	
 	public Tetromino getTetromino() {
@@ -27,13 +29,13 @@ public class GameSystem {
 	public GameSystem(int x, int y, Tetromino tetromino) {
 		this.grid = new Grid(x,y); 
 		this.tetromino = tetromino; 
+		state = GameState.NOT_STARTED; 
 	}
 	public GameSystem() {
 		this.grid = new Grid(); 
-		this.tetromino = this.generateNextTetromino(); 
+		state = GameState.NOT_STARTED;
+		this.tetroQueue = new TetroQueue(); 
 	}
-
-
 
 	public Grid getGrid() {
 		return grid;
@@ -66,7 +68,8 @@ public class GameSystem {
 		
 	}
 	public void Start() {
-		
+		state = GameState.PLAY;
+		this.tetromino = this.tetroQueue.getTetro(); 
 	}
 	public void Update() {
 		
@@ -96,58 +99,24 @@ public class GameSystem {
 		}
 		else {
 			//Spawn a new tetromino
-			this.tetromino = generateNextTetromino(); 
+			this.tetromino = this.tetroQueue.getTetro(); 
 			//Just for easier debug for the moment spawn t-style piece
 		    //this.tetromino = new TStyle(); 
 			this.tetromino.position = new Vector2D(2,-1); 
 		}
 	}
 
-	public int addScoreLines(List<Integer> indexesToBeRemoved) {
+	public void addScoreLines(List<Integer> indexesToBeRemoved) {
 		
-		int score = 0;
 		int nblines = indexesToBeRemoved.size();
 		
 		switch (nblines) {
 			case 4:
-				score += 800;
+				this.score += 800;
 				break;
 			default:
-				score += nblines*100;
-		}
-		
-		return score;
-	}
-	
-	public Tetromino generateNextTetromino() {
-		Random rand = new Random();
-		int rand_perc = rand.nextInt(100);
-		if (rand_perc < 10) {
-			return new OStyle();
-		}
-		else if (rand_perc < 20) {
-			return new JStyle(); 
-		}
-		else if (rand_perc < 30) {
-			return new IStyle(); 
-		}
-		else if (rand_perc < 40) {
-			return new LStyle();
-		}
-		else if (rand_perc < 50) {
-			//Celui là est en double
-			return new OStyle(); 
-		}
-		else if (rand_perc < 60) {
-			return new SStyle();
-		}
-		else if (rand_perc < 70) {
-			return new TStyle(); 
-		}
-		else {
-			return new ZStyle(); 
+				this.score += nblines*100;
 		}
 		
 	}
-
 }

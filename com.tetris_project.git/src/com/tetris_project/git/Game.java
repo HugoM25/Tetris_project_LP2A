@@ -27,8 +27,7 @@ public class Game implements KeyListener {
 	public static void main(String[] args) {
 		
 		Game myGame = new Game(); 
-		
-		sysGame.Update();
+
 	    
 	    Timer timer = new Timer();
 	    
@@ -41,12 +40,14 @@ public class Game implements KeyListener {
 	        	in.RefreshPlayFrame(sysGame.showGrid());
 	        	
 	        	//Update game automatically every 60 frames --> 1 second 
-	        	if (counter > counterMax ) {
-	        		counter = 0;
-	        		sysGame.Update();
-	        	}
-	        	else {
-	        		counter++; 
+	        	if (sysGame.state == GameState.PLAY) {
+	        		if (counter > counterMax ) {
+	        			counter = 0;
+	        			sysGame.Update();
+	        		}
+	        		else {
+	        			counter++; 
+	        		}
 	        	}
 	        }
 	     }, 0, (long) (1000/FPS));
@@ -74,6 +75,9 @@ public class Game implements KeyListener {
 		}
 		else if (e.getKeyCode() == KeyEvent.VK_SPACE) {
 			sysGame.rotateTetroLeft();
+		}
+		else if (e.getKeyCode() == KeyEvent.VK_S && sysGame.state == GameState.NOT_STARTED) {
+			sysGame.Start();
 		}
 
 	}
