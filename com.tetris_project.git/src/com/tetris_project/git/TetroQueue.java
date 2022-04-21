@@ -7,6 +7,7 @@ import java.util.Random;
 import tetrominoes.*;
 
 public class TetroQueue {
+	
 	private Tetromino bag;
 	private List<Tetromino> queue; 
 	
