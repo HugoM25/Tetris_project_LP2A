@@ -93,8 +93,6 @@ public class GameSystem {
 				//Update score
 				addScoreLines(indexes);
 				
-				//Debug
-				grid.displayGridValue();
 			}
 		}
 		else {
@@ -118,5 +116,8 @@ public class GameSystem {
 				this.score += nblines*100;
 		}
 		
+	}
+	public Tetromino[] getNextTetrominoes() {
+		return this.tetroQueue.seeNNextTetromino(3);
 	}
 }

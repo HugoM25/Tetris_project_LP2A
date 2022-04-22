@@ -127,9 +127,7 @@ public class Grid {
 			}
 		}
 		
-		//Debug
-		System.out.println(indexesToBeRemoved); 
-		
+			
 		return indexesToBeRemoved ;
 	}
 	

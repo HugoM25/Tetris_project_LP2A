@@ -5,7 +5,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class Interface extends JFrame{
+public class Interface {
 	
 	public JFrame frame, frules, playFrame;
     private JLabel label, label1, label2, label3;
@@ -13,7 +13,7 @@ public class Interface extends JFrame{
     private JButton playB, rulesB, returnB;
     private ButtonGroup difficulty;
     
-    public final Drawing canvas = new Drawing(); 
+    public Drawing canvas; 
     
     public Interface() {
     	InitializeFrames();
@@ -27,14 +27,96 @@ public class Interface extends JFrame{
     }
     
     public void InitializePlayFrame() {
+    	
     	playFrame = new JFrame("Tetris Game");
-    	setF(playFrame);
-    	playFrame.setSize(700,634);
-    	canvas.setSize(700, 634);
-		canvas.setGridDisplay(null);
-		playFrame.add(canvas);
-		canvas.requestFocus();
-		canvas.setFocusable(true);
+    	
+    	//The main panel (used for layout)
+    	JPanel main = new JPanel(new GridBagLayout());
+    	GridBagConstraints c = new GridBagConstraints(); 
+    	
+    	//The layout panels 
+    	JPanel header = new JPanel(); 
+    	JPanel footer = new JPanel(); 
+    	JPanel leftPart = new JPanel(); 
+    	JPanel rightPart = new JPanel(); 
+    	JPanel centerPart = new JPanel();
+    	
+    	//The header
+    	c.fill = GridBagConstraints.BOTH;
+        c.gridwidth = 3; 
+        c.weighty = 0.05;
+        c.gridy = 0;
+         
+        header = new JPanel(new GridBagLayout());
+        header.setBackground(Color.BLACK);
+        
+        JLabel title = new JLabel("NOT TETRIS GAME"); 
+        title.setForeground(Color.WHITE);
+       
+        header.add(title);
+        
+        main.add(header,c);
+         
+        //The infos on the left
+        c.gridwidth = 1;
+        c.weightx = 0.35; 
+        c.weighty = 0.90;
+        c.gridy = 1;
+        c.gridx = 0; 
+        leftPart = new JPanel();
+        leftPart.setBackground(Color.BLACK);
+        main.add(leftPart, c);
+              
+        //The game grid part
+        c.gridwidth = 1;
+        c.weightx = 0.30; 
+        c.weighty = 0.90;
+        c.gridy = 1;
+        c.gridx = 1; 
+        
+        centerPart = new JPanel(new BorderLayout());
+        centerPart.setBackground(Color.BLACK);
+       
+        //The canvas used to display the playGrid
+        canvas = new Drawing();
+        
+        canvas.setGridDisplay(null);
+      	canvas.requestFocus();
+      	canvas.setFocusable(true);
+        centerPart.add(canvas, BorderLayout.CENTER);
+        
+        main.add(centerPart, c);
+        
+        //The infos on the right
+        c.gridwidth = 1;
+        c.weightx = 0.35; 
+        c.weighty = 0.90;
+        c.gridy = 1;
+        c.gridx = 2; 
+        rightPart = new JPanel();
+        rightPart.setBackground(Color.BLACK);
+        main.add(rightPart, c);
+        
+        
+        //The footer 
+        footer = new JPanel(new GridBagLayout());
+        footer.setBackground(Color.BLACK);
+       
+        c.gridwidth = 3; 
+        c.weighty = 0.05;
+        c.weightx = 1;
+        c.gridx = 0;
+        c.gridy = 2;
+
+        main.add(footer,c);
+		//Finally add the main layout to the frame
+		playFrame.add(main);
+		//And configure the frame
+		playFrame.pack();
+        playFrame.validate();
+        playFrame.setSize(1066, 600);
+        playFrame.setLocationRelativeTo(null);
+        playFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
     
     public void RefreshPlayFrame(int[][] gridDisplay) {    	

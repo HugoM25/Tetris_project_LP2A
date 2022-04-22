@@ -51,7 +51,14 @@ public class TetroQueue {
 		for (int j = 0; j < bagLength; j++) {
 			this.queue.add(bag[j]);
 		}
+	}
 	
+	public Tetromino[] seeNNextTetromino(int n) {
+		Tetromino[] nextTetros = new Tetromino[n];
+		for (int i = 0; i < n ; i++) {
+			nextTetros[i] = this.queue.get(i+1);
+		}
+		return nextTetros; 
 	}
 
 }
