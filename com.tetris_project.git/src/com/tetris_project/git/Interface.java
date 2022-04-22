@@ -13,6 +13,7 @@ public class Interface {
     private JButton playB, rulesB, returnB;
     private ButtonGroup difficulty;
     
+    public String[] COLOR_PALETTE = {"#0B132B", "#f7f0f5" , "#1ccad8" , "#db5461" , "#d6e681" , "#4b7f52" }; 
     public Drawing canvas; 
     
     public Interface() {
@@ -48,7 +49,7 @@ public class Interface {
         c.gridy = 0;
          
         header = new JPanel(new GridBagLayout());
-        header.setBackground(Color.BLACK);
+        header.setBackground(Color.decode("#0B132B"));
         
         JLabel title = new JLabel("NOT TETRIS GAME"); 
         title.setForeground(Color.WHITE);
@@ -64,7 +65,7 @@ public class Interface {
         c.gridy = 1;
         c.gridx = 0; 
         leftPart = new JPanel();
-        leftPart.setBackground(Color.BLACK);
+        leftPart.setBackground(Color.decode("#0B132B"));
         main.add(leftPart, c);
               
         //The game grid part
@@ -75,7 +76,7 @@ public class Interface {
         c.gridx = 1; 
         
         centerPart = new JPanel(new BorderLayout());
-        centerPart.setBackground(Color.BLACK);
+        centerPart.setBackground(Color.decode("#0B132B"));
        
         //The canvas used to display the playGrid
         canvas = new Drawing();
@@ -94,13 +95,13 @@ public class Interface {
         c.gridy = 1;
         c.gridx = 2; 
         rightPart = new JPanel();
-        rightPart.setBackground(Color.BLACK);
+        rightPart.setBackground(Color.decode("#0B132B"));
         main.add(rightPart, c);
         
         
         //The footer 
         footer = new JPanel(new GridBagLayout());
-        footer.setBackground(Color.BLACK);
+        footer.setBackground(Color.decode("#0B132B"));
        
         c.gridwidth = 3; 
         c.weighty = 0.05;

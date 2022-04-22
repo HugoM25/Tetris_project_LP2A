@@ -15,9 +15,10 @@ import javax.swing.JPanel;
 public class Drawing extends JPanel {
 	
 	public int[][] gridDisplay;
-	public static final Color[] COLOR_PALETTE = { Color.WHITE, Color.GREEN, Color.BLUE, Color.RED, Color.PINK , Color.MAGENTA, Color.YELLOW, Color.CYAN}; 
-
-	
+	public static final Color[] COLOR_PALETTE = { Color.WHITE, Color.decode("#1ccad8"), Color.decode("#d6e681"), Color.decode("#f1a208"), 
+												  Color.decode("#4b7f52") , Color.decode("#db5461"), Color.decode("#9381ff"), 
+												  Color.decode("#246eb9")
+												}; 
 	public int DIMX = 10;
 	public int DIMY = 20;
 	
@@ -51,7 +52,7 @@ public class Drawing extends JPanel {
 	    Graphics2D graphic2d = (Graphics2D) g;
 	    int[][] gridDisplay = this.gridDisplay; 
 	    //Create black background
-	    graphic2d.setColor(Color.BLACK);
+	    graphic2d.setColor(Color.decode("#0B132B"));
 	    graphic2d.fillRect(0, 0, this.getSize().width, this.getSize().height);
 	    
 	    //Display grid if any
