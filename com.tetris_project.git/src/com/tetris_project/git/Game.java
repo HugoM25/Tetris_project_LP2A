@@ -1,15 +1,10 @@
 package com.tetris_project.git;
 
-import java.awt.Canvas;
-import java.awt.Graphics;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.util.Timer;
 import java.util.TimerTask;
 
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.SwingUtilities;
 
 public class Game implements KeyListener {
 	
@@ -27,7 +22,6 @@ public class Game implements KeyListener {
 	public static void main(String[] args) {
 		
 		Game myGame = new Game(); 
-
 	    
 	    Timer timer = new Timer();
 	    
@@ -60,25 +54,41 @@ public class Game implements KeyListener {
 	}
 
 	public void keyPressed(KeyEvent e) {
+		//Handle inputs (it varies with the game's state) 
+		switch (sysGame.state) {
+			case PLAY :
+				if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
+				    sysGame.moveTetroRight();
+				}
+				else if (e.getKeyCode() == KeyEvent.VK_LEFT) {
+				    sysGame.moveTetroLeft();
+				}
+				else if (e.getKeyCode() == KeyEvent.VK_DOWN) {
+					sysGame.Update();
+				}
+				else if (e.getKeyCode() == KeyEvent.VK_SPACE) {
+					sysGame.rotateTetroLeft();
+				}
+				else if (e.getKeyCode() == KeyEvent.VK_P) {
+					sysGame.state = GameState.PAUSE;
+				}
+			case NOT_STARTED :
+				if (e.getKeyCode() == KeyEvent.VK_S) {
+					sysGame.Start();
+				}
+				break; 
+			case PAUSE :
+				if (e.getKeyCode() == KeyEvent.VK_P) {
+					sysGame.state = GameState.PLAY;
+				}
+				break;
+			case END :
+				break;
+			default :
+				break;
+		}
 		// TODO Auto-generated method stub
-		if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
-		    sysGame.moveTetroRight();
-	
-		}
-		else if (e.getKeyCode() == KeyEvent.VK_LEFT) {
-		    sysGame.moveTetroLeft();
-		   
-		}
-		else if (e.getKeyCode() == KeyEvent.VK_DOWN) {
-			sysGame.Update();
-			
-		}
-		else if (e.getKeyCode() == KeyEvent.VK_SPACE) {
-			sysGame.rotateTetroLeft();
-		}
-		else if (e.getKeyCode() == KeyEvent.VK_S && sysGame.state == GameState.NOT_STARTED) {
-			sysGame.Start();
-		}
+		
 
 	}
 
