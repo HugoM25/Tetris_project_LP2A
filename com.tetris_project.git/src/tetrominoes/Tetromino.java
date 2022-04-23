@@ -1,5 +1,5 @@
 package tetrominoes;
-import com.tetris_project.git.Vector2D;
+import com.tetris_project.model.Vector2D;
 
 public class Tetromino {
 	

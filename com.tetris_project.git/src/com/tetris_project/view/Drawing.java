@@ -1,4 +1,4 @@
-package com.tetris_project.git;
+package com.tetris_project.view;
 import java.awt.Canvas;
 import java.awt.Color;
 import java.awt.Graphics;

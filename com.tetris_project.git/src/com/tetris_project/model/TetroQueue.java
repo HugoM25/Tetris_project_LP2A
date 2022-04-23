@@ -1,4 +1,4 @@
-package com.tetris_project.git;
+package com.tetris_project.model;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,4 +1,4 @@
-package com.tetris_project.git;
+package com.tetris_project.model;
 
 public class Vector2D {
 	private int x; 

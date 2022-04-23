@@ -1,4 +1,4 @@
-package com.tetris_project.git;
+package com.tetris_project.model;
 
 public enum GameState {
 	NOT_STARTED,

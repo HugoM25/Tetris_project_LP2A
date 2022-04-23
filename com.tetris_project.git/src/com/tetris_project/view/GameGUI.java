@@ -1,4 +1,4 @@
-package com.tetris_project.git;
+package com.tetris_project.view;
 
 import javax.swing.*;
 
@@ -18,6 +18,7 @@ public class GameGUI {
     
     public String[] COLOR_PALETTE = {"#0B132B", "#f7f0f5" , "#1ccad8" , "#db5461" , "#d6e681" , "#4b7f52" }; 
     public Drawing canvas; 
+    public JLabel scoreText; 
     public DispTetroPanel nextT1, nextT2, nextT3; 
     
     public GameGUI() {
@@ -57,6 +58,7 @@ public class GameGUI {
         header.setBackground(Color.decode("#0B132B"));
         
         JLabel title = new JLabel("NOT TETRIS GAME"); 
+        title.setFont(new Font("Verdana", Font.PLAIN, 30));
         title.setForeground(Color.WHITE);
        
         header.add(title);
@@ -69,9 +71,10 @@ public class GameGUI {
         c.weighty = 0.90;
         c.gridy = 1;
         c.gridx = 0; 
-        leftPart = new JPanel();
+        leftPart = new JPanel(new BorderLayout());
         leftPart.setBackground(Color.decode("#0B132B"));
         main.add(leftPart, c);
+        
               
         //The game grid part
         c.gridwidth = 1;
@@ -95,7 +98,7 @@ public class GameGUI {
         
         //The infos on the right
         c.gridwidth = 1;
-        c.weightx = 0.35; 
+        c.weightx = 0.25; 
         c.weighty = 0.90;
         c.gridy = 1;
         c.gridx = 2; 
@@ -108,8 +111,8 @@ public class GameGUI {
         downRight.setBackground(Color.decode("#0B132B"));
         JPanel middleRight = new JPanel(new GridBagLayout());
         middleRight.setBackground(Color.decode("#0B132B"));
-        JLabel titleNext = new JLabel("NEXT"); 
-        
+        JLabel titleNext = new JLabel("NEXT TETROMINOES"); 
+        titleNext.setFont(new Font("Verdana", Font.PLAIN, 15));
         c2.fill = GridBagConstraints.BOTH;
     	c2.weightx = 1;
     	c2.weighty = 0.1;

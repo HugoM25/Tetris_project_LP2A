@@ -1,9 +1,13 @@
-package com.tetris_project.git;
+package com.tetris_project.controller;
 
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.util.Timer;
 import java.util.TimerTask;
+
+import com.tetris_project.model.GameState;
+import com.tetris_project.model.GameSystem;
+import com.tetris_project.view.GameGUI;
 
 
 public class Game implements KeyListener {
