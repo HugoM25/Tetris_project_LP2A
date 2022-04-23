@@ -8,12 +8,12 @@ import java.util.TimerTask;
 
 public class Game implements KeyListener {
 	
-	private static Interface in; 
+	private static GameGUI in; 
 	private static GameSystem sysGame;
 	private static int FPS = 60; 
 	
 	public Game() {
-		in = new Interface(); 
+		in = new GameGUI(); 
 		sysGame = new GameSystem();
 		in.canvas.addKeyListener(this);
 
@@ -32,7 +32,7 @@ public class Game implements KeyListener {
 	        public void run() {
 	        	
 	        	in.RefreshPlayFrame(sysGame.showGrid());
-	        	
+	        	in.DisplayNextTetrominoes(sysGame.getNextTetrominoes());
 	        	//Update game automatically every 60 frames --> 1 second 
 	        	if (sysGame.state == GameState.PLAY) {
 	        		if (counter > counterMax ) {

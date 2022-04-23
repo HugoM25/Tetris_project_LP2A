@@ -1,11 +1,14 @@
 package com.tetris_project.git;
 
 import javax.swing.*;
+
+import tetrominoes.Tetromino;
+
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class Interface {
+public class GameGUI {
 	
 	public JFrame frame, frules, playFrame;
     private JLabel label, label1, label2, label3;
@@ -15,8 +18,9 @@ public class Interface {
     
     public String[] COLOR_PALETTE = {"#0B132B", "#f7f0f5" , "#1ccad8" , "#db5461" , "#d6e681" , "#4b7f52" }; 
     public Drawing canvas; 
+    public DispTetroPanel nextT1, nextT2, nextT3; 
     
-    public Interface() {
+    public GameGUI() {
     	InitializeFrames();
     	frame.setVisible(true);
     	
@@ -34,6 +38,7 @@ public class Interface {
     	//The main panel (used for layout)
     	JPanel main = new JPanel(new GridBagLayout());
     	GridBagConstraints c = new GridBagConstraints(); 
+    	GridBagConstraints c2 = new GridBagConstraints();
     	
     	//The layout panels 
     	JPanel header = new JPanel(); 
@@ -94,11 +99,42 @@ public class Interface {
         c.weighty = 0.90;
         c.gridy = 1;
         c.gridx = 2; 
-        rightPart = new JPanel();
+        rightPart = new JPanel(new GridBagLayout());
         rightPart.setBackground(Color.decode("#0B132B"));
+        
+        JLabel titleNext = new JLabel("NEXT"); 
+        c2.fill = GridBagConstraints.BOTH;
+    	c2.insets = new Insets(10,10,10,10);
+        c2.weightx = 1;
+        c2.weighty = 0.1;
+        c2.gridx =0;
+        c2.gridy =0;
+        
+        title.setForeground(Color.WHITE);
+        rightPart.add(titleNext,c2);
+        
+        nextT1 = new DispTetroPanel();
+        c2.weightx = 1;
+        c2.weighty = 0.2;
+        c2.gridx =0;
+        c2.gridy =1;
+        rightPart.add(nextT1, c2);
+        
+        c2.gridy =2;
+        nextT2 = new DispTetroPanel();
+        rightPart.add(nextT2, c2);
+        c2.gridy =3;
+        nextT3 = new DispTetroPanel();
+        rightPart.add(nextT3, c2);
+        
+        JPanel empty = new JPanel();
+        empty.setBackground(Color.decode("#0B132B"));
+        rightPart.add(empty,c2);
+        
+        
         main.add(rightPart, c);
-        
-        
+        c2.weighty = 0.3;
+        c2.gridy =4;
         //The footer 
         footer = new JPanel(new GridBagLayout());
         footer.setBackground(Color.decode("#0B132B"));
@@ -123,6 +159,14 @@ public class Interface {
     public void RefreshPlayFrame(int[][] gridDisplay) {    	
 		canvas.setGridDisplay(gridDisplay);
     	canvas.repaint();
+    }
+    public void DisplayNextTetrominoes(Tetromino[] tetrominoes) {
+    	nextT1.setTetromino(tetrominoes[0]);
+    	nextT2.setTetromino(tetrominoes[1]);
+    	nextT3.setTetromino(tetrominoes[2]);
+    	nextT1.repaint();
+    	nextT2.repaint();
+    	nextT3.repaint();
     }
     
     public void InitializeMenuFrame() {

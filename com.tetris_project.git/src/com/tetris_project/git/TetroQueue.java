@@ -56,7 +56,7 @@ public class TetroQueue {
 	public Tetromino[] seeNNextTetromino(int n) {
 		Tetromino[] nextTetros = new Tetromino[n];
 		for (int i = 0; i < n ; i++) {
-			nextTetros[i] = this.queue.get(i+1);
+			nextTetros[i] = this.queue.get(i);
 		}
 		return nextTetros; 
 	}
