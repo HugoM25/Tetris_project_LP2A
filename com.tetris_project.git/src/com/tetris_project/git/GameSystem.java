@@ -67,6 +67,11 @@ public class GameSystem {
 		return this.grid.gridToDisplay(this.tetromino);
 		
 	}
+	public void hardDrop() {
+		while (this.tetromino != null) {
+			this.Update();
+		}
+	}
 	public void Start() {
 		state = GameState.PLAY;
 		this.tetromino = this.tetroQueue.getTetro(); 

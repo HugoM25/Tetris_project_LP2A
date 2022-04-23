@@ -69,6 +69,9 @@ public class Game implements KeyListener {
 				else if (e.getKeyCode() == KeyEvent.VK_SPACE) {
 					sysGame.rotateTetroLeft();
 				}
+				else if (e.getKeyCode() == KeyEvent.VK_D) {
+					sysGame.hardDrop();
+				}
 				else if (e.getKeyCode() == KeyEvent.VK_P) {
 					sysGame.state = GameState.PAUSE;
 				}
