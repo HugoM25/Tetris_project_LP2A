@@ -71,9 +71,14 @@ public class GameGUI {
         c.weighty = 0.90;
         c.gridy = 1;
         c.gridx = 0; 
-        leftPart = new JPanel(new BorderLayout());
+        leftPart = new JPanel(new GridBagLayout());
         leftPart.setBackground(Color.decode("#0B132B"));
         main.add(leftPart, c);
+        
+        scoreText = new JLabel("Score : 0");
+        scoreText.setForeground(Color.WHITE);
+        scoreText.setFont(new Font("Verdana", Font.PLAIN, 30));
+        leftPart.add(scoreText);
         
               
         //The game grid part
@@ -194,6 +199,12 @@ public class GameGUI {
     	nextT1.repaint();
     	nextT2.repaint();
     	nextT3.repaint();
+    }
+    public void setScoreText(String text) {
+    	if (scoreText != null) {
+    		scoreText.setText(text);
+    	}
+    	 
     }
     
     public void InitializeMenuFrame() {

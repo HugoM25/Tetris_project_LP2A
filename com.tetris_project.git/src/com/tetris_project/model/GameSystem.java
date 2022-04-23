@@ -20,6 +20,13 @@ public class GameSystem {
 	public GameState state; 
 	
 	
+	public int getScore() {
+		return score;
+	}
+	public void setScore(int score) {
+		this.score = score;
+	}
+	
 	public Tetromino getTetromino() {
 		return tetromino;
 	}
