@@ -16,7 +16,6 @@ public class Game implements KeyListener {
 		in = new GameGUI(); 
 		sysGame = new GameSystem();
 		in.canvas.addKeyListener(this);
-
 	}
 
 	public static void main(String[] args) {
@@ -31,8 +30,10 @@ public class Game implements KeyListener {
 	    	
 	        public void run() {
 	        	
+	        	
 	        	in.RefreshPlayFrame(sysGame.showGrid());
 	        	in.DisplayNextTetrominoes(sysGame.getNextTetrominoes());
+	        	
 	        	//Update game automatically every 60 frames --> 1 second 
 	        	if (sysGame.state == GameState.PLAY) {
 	        		if (counter > counterMax ) {
@@ -55,6 +56,7 @@ public class Game implements KeyListener {
 
 	public void keyPressed(KeyEvent e) {
 		//Handle inputs (it varies with the game's state) 
+
 		switch (sysGame.state) {
 			case PLAY :
 				if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
@@ -75,9 +77,10 @@ public class Game implements KeyListener {
 				else if (e.getKeyCode() == KeyEvent.VK_P) {
 					sysGame.state = GameState.PAUSE;
 				}
+				break;
 			case NOT_STARTED :
 				if (e.getKeyCode() == KeyEvent.VK_S) {
-					sysGame.Start();
+					sysGame.Start();					
 				}
 				break; 
 			case PAUSE :

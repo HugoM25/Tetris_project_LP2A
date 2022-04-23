@@ -102,30 +102,54 @@ public class GameGUI {
         rightPart = new JPanel(new GridBagLayout());
         rightPart.setBackground(Color.decode("#0B132B"));
         
+        JPanel upRight = new JPanel(new GridBagLayout());
+        upRight.setBackground(Color.decode("#0B132B"));
+        JPanel downRight = new JPanel(new GridBagLayout());
+        downRight.setBackground(Color.decode("#0B132B"));
+        JPanel middleRight = new JPanel(new GridBagLayout());
+        middleRight.setBackground(Color.decode("#0B132B"));
         JLabel titleNext = new JLabel("NEXT"); 
+        
         c2.fill = GridBagConstraints.BOTH;
-    	c2.insets = new Insets(10,10,10,10);
+    	c2.weightx = 1;
+    	c2.weighty = 0.1;
+        c2.gridx = 0; 
+        c2.gridy = 0;
+        rightPart.add(upRight,c2); 
+        c2.gridx = 0; 
+        c2.gridy = 1;
+        c2.weighty = 0.4;
+        rightPart.add(middleRight, c2);
+        c2.gridx = 0; 
+        c2.gridy = 2;
+        c2.weighty = 0.5;
+        rightPart.add(downRight ,c2);
+        
+        c2.insets = new Insets(10,10,10,10);
         c2.weightx = 1;
         c2.weighty = 0.1;
         c2.gridx =0;
         c2.gridy =0;
         
         title.setForeground(Color.WHITE);
-        rightPart.add(titleNext,c2);
+        header.add(title);
         
         nextT1 = new DispTetroPanel();
         c2.weightx = 1;
         c2.weighty = 0.2;
         c2.gridx =0;
         c2.gridy =1;
-        rightPart.add(nextT1, c2);
+        middleRight.add(nextT1, c2);
         
         c2.gridy =2;
         nextT2 = new DispTetroPanel();
-        rightPart.add(nextT2, c2);
+        middleRight.add(nextT2, c2);
         c2.gridy =3;
         nextT3 = new DispTetroPanel();
-        rightPart.add(nextT3, c2);
+        middleRight.add(nextT3, c2);
+        
+        upRight.add(titleNext); 
+        titleNext.setForeground(Color.WHITE);
         
         JPanel empty = new JPanel();
         empty.setBackground(Color.decode("#0B132B"));
