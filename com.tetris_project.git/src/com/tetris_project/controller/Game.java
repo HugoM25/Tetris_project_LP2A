@@ -5,6 +5,7 @@ import java.awt.event.KeyListener;
 import java.util.Timer;
 import java.util.TimerTask;
 
+import com.tetris_project.model.Difficulty;
 import com.tetris_project.model.GameState;
 import com.tetris_project.model.GameSystem;
 import com.tetris_project.view.GameGUI;
@@ -14,7 +15,7 @@ public class Game implements KeyListener {
 	
 	private static GameGUI in; 
 	private static GameSystem sysGame;
-	private static int FPS = 60; 
+	private static int FPS = 60;  
 	
 	public Game() {
 		in = new GameGUI(); 
@@ -29,9 +30,7 @@ public class Game implements KeyListener {
 	    Timer timer = new Timer();
 	    
 	    timer.schedule( new TimerTask() {
-	    	int counter =0; 
-	    	int counterMax = 60; 
-	    	
+	    	int counter =0;    	
 	        public void run() {
 	        	
 	        	
@@ -41,7 +40,7 @@ public class Game implements KeyListener {
 	        	
 	        	//Update game automatically every 60 frames --> 1 second 
 	        	if (sysGame.state == GameState.PLAY) {
-	        		if (counter > counterMax ) {
+	        		if (counter > sysGame.getNbFramesBetweenUpdates() ) {
 	        			counter = 0;
 	        			sysGame.Update();
 	        		}

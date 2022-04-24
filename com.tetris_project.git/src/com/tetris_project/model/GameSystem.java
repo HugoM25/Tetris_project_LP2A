@@ -20,6 +20,8 @@ public class GameSystem {
 	public GameState state; 
 	private boolean isInCombo; 
 	
+	private Difficulty difficulty; 
+	private int nbFramesBetweenUpdates;
 	
 	public int getScore() {
 		return score;
@@ -34,6 +36,11 @@ public class GameSystem {
 	public void setTetromino(Tetromino tetromino) {
 		this.tetromino = tetromino;
 	}
+	
+	public int getNbFramesBetweenUpdates() {
+		return this.nbFramesBetweenUpdates; 
+	}
+	
 	public GameSystem(int x, int y, Tetromino tetromino) {
 		this.grid = new Grid(x,y); 
 		this.tetromino = tetromino; 
@@ -44,6 +51,8 @@ public class GameSystem {
 		state = GameState.NOT_STARTED;
 		this.tetroQueue = new TetroQueue(); 
 		this.isInCombo = false;
+		this.nbFramesBetweenUpdates = 60; 
+		this.difficulty = Difficulty.UNKNOWN;
 	}
 
 	public Grid getGrid() {
@@ -81,10 +90,33 @@ public class GameSystem {
 			this.Update();
 		}
 	}
-	public void Start() {
-		state = GameState.PLAY;
-		this.tetromino = this.tetroQueue.getTetro(); 
+	public void setFramesWithDifficulty() {
+		switch(this.difficulty) {
+			case EASY :
+				this.nbFramesBetweenUpdates = 60;
+				break;
+			case MEDIUM :
+				this.nbFramesBetweenUpdates = 50;
+				break; 
+			case PRO :
+				this.nbFramesBetweenUpdates = 40;
+				break;
+			case LEGEND :
+				this.nbFramesBetweenUpdates = 30;
+				break;
+			default :
+				this.nbFramesBetweenUpdates = 60;
+				break;
+		}
+		
 	}
+	public void Start() {
+		setFramesWithDifficulty();
+		state = GameState.PLAY;
+		this.tetromino = this.tetroQueue.getTetro();
+		
+	}
+
 	public void Update() {
 		
 		//Handle piece movement
