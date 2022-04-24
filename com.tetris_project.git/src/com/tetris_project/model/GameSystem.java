@@ -18,6 +18,7 @@ public class GameSystem {
 	private Tetromino tetromino;
 	private TetroQueue tetroQueue; 
 	public GameState state; 
+	private boolean isInCombo; 
 	
 	
 	public int getScore() {
@@ -42,6 +43,7 @@ public class GameSystem {
 		this.grid = new Grid(); 
 		state = GameState.NOT_STARTED;
 		this.tetroQueue = new TetroQueue(); 
+		this.isInCombo = false;
 	}
 
 	public Grid getGrid() {
@@ -94,6 +96,10 @@ public class GameSystem {
 			    this.tetromino.position.add(new Vector2D(0,1));;
 			}
 			else {
+				//Check if game is lost
+				if (this.tetromino.position.getY() < 0) {
+					state = GameState.END;
+				}
 				//Anchors it
 				grid.attachTetrominoToGrid(tetromino);
 				this.tetromino = null; 
@@ -110,9 +116,7 @@ public class GameSystem {
 		else {
 			//Spawn a new tetromino
 			this.tetromino = this.tetroQueue.getTetro(); 
-			//Just for easier debug for the moment spawn t-style piece
-		    //this.tetromino = new TStyle(); 
-			this.tetromino.position = new Vector2D(2,-1); 
+			this.tetromino.position = new Vector2D(grid.getWidth()/2,-1); 
 		}
 	}
 
@@ -122,10 +126,17 @@ public class GameSystem {
 		
 		switch (nblines) {
 			case 4:
-				this.score += 800;
+				if (isInCombo) {
+					this.score += 1200;
+				}
+				else {
+					this.score += 800;
+					isInCombo = true;
+				}
 				break;
 			default:
 				this.score += nblines*100;
+				isInCombo = false;
 		}
 		
 	}

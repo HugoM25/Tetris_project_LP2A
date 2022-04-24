@@ -73,10 +73,10 @@ public class Game implements KeyListener {
 				else if (e.getKeyCode() == KeyEvent.VK_DOWN) {
 					sysGame.Update();
 				}
-				else if (e.getKeyCode() == KeyEvent.VK_SPACE) {
+				else if (e.getKeyCode() == KeyEvent.VK_UP) {
 					sysGame.rotateTetroLeft();
 				}
-				else if (e.getKeyCode() == KeyEvent.VK_D) {
+				else if (e.getKeyCode() == KeyEvent.VK_SPACE) {
 					sysGame.hardDrop();
 				}
 				else if (e.getKeyCode() == KeyEvent.VK_P) {
