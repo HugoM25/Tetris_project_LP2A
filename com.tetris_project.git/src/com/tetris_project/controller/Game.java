@@ -13,14 +13,15 @@ import com.tetris_project.view.GameGUI;
 
 public class Game implements KeyListener {
 	
-	private static GameGUI in; 
+	private static GameGUI guiGame; 
 	private static GameSystem sysGame;
+	
 	private static int FPS = 60;  
 	
 	public Game() {
-		in = new GameGUI(); 
+		guiGame = new GameGUI(); 
 		sysGame = new GameSystem();
-		in.canvas.addKeyListener(this);
+		guiGame.canvas.addKeyListener(this);
 	}
 
 	public static void main(String[] args) {
@@ -33,13 +34,13 @@ public class Game implements KeyListener {
 	    	int counter =0;    	
 	        public void run() {
 	        	
-	        	in.RefreshPlayFrame(sysGame.showGrid());
-	        	in.DisplayNextTetrominoes(sysGame.getNextTetrominoes());
-	        	in.setScoreText("Score : " + sysGame.getScore());
-	        	in.setTimerText("TIME : " + sysGame.getTimer());
-	        	in.setStateText("Difficulty : " + in.getDiff());
-	        	in.setHighscoreText("Highscore : "+sysGame.getHighscore());
-	        	in.setLinesClearedText("LINES CLEARED : " + sysGame.getLinesClearedCount());
+	        	guiGame.RefreshPlayFrame(sysGame.showGrid());
+	        	guiGame.DisplayNextTetrominoes(sysGame.getNextTetrominoes());
+	        	guiGame.setScoreText("Score : " + sysGame.getScore());
+	        	guiGame.setTimerText("TIME : " + sysGame.getTimer());
+	        	guiGame.setStateText("Difficulty : " + guiGame.getDiff());
+	        	guiGame.setHighscoreText("Highscore : "+sysGame.getHighscore());
+	        	guiGame.setLinesClearedText("LINES CLEARED : " + sysGame.getLinesClearedCount());
 	        	
 	        	//Update game automatically every 60 frames --> 1 second 
 	        	if (sysGame.state == GameState.PLAY) {
@@ -89,7 +90,7 @@ public class Game implements KeyListener {
 				break;
 			case NOT_STARTED :
 				if (e.getKeyCode() == KeyEvent.VK_S) {
-					sysGame.setDifficulty(in.getDiff());
+					sysGame.setDifficulty(guiGame.getDiff());
 					sysGame.Start();
 				}
 				break; 
