@@ -18,7 +18,7 @@ public class GameGUI {
     
     public String[] COLOR_PALETTE = {"#0B132B", "#f7f0f5" , "#1ccad8" , "#db5461" , "#d6e681" , "#4b7f52" }; 
     public Drawing canvas; 
-    public JLabel scoreText, timer, state, pause, restart; 
+    public JLabel scoreText, timer, state, pause, restart, highscore, linesCleared; 
     public DispTetroPanel nextT1, nextT2, nextT3;
     
     private String diff;
@@ -82,7 +82,7 @@ public class GameGUI {
         
         c3.gridwidth = 1;
         c3.weightx = 1; 
-        c3.weighty = 0.3;
+        c3.weighty = 0.2;
         c3.gridy = 0;
         c3.gridx = 0;
         scoreText = new JLabel("Score : 0");
@@ -91,11 +91,20 @@ public class GameGUI {
         scoreText.setFont(new Font("Verdana", Font.PLAIN, 20));
         leftPart.add(scoreText,c3);
         
+        c3.gridwidth = 1;
+        c3.weightx = 1; 
+        c3.weighty = 0.2;
+        c3.gridy = 1;
+        c3.gridx = 0; 
+        highscore = new JLabel("HighScore : 0");
+        highscore.setForeground(Color.WHITE);
+        highscore.setFont(new Font("Verdana", Font.PLAIN, 20));
+        leftPart.add(highscore,c3);
         
         c3.gridwidth = 1;
         c3.weightx = 1; 
-        c3.weighty = 0.3;
-        c3.gridy = 1;
+        c3.weighty = 0.2;
+        c3.gridy = 2;
         c3.gridx = 0; 
         timer = new JLabel("TIMER : 0");
         timer.setForeground(Color.WHITE);
@@ -104,13 +113,25 @@ public class GameGUI {
         
         c3.gridwidth = 1;
         c3.weightx = 1; 
-        c3.weighty = 0.4;
-        c3.gridy = 2;
+        c3.weighty = 0.2;
+        c3.gridy = 3;
+        c3.gridx = 0; 
+        linesCleared = new JLabel("LINES CLEARED : ");
+        linesCleared.setForeground(Color.WHITE);
+        linesCleared.setFont(new Font("Verdana", Font.PLAIN, 15));
+        leftPart.add(linesCleared,c3);
+        
+        c3.gridwidth = 1;
+        c3.weightx = 1; 
+        c3.weighty = 0.2;
+        c3.gridy = 4;
         c3.gridx = 0; 
         state = new JLabel("Difficulty : NULL");
         state.setForeground(Color.WHITE);
-        state.setFont(new Font("Verdana", Font.PLAIN, 20));
+        state.setFont(new Font("Verdana", Font.PLAIN, 15));
         leftPart.add(state,c3);
+        
+        
         
               
         //The game grid part
@@ -128,6 +149,7 @@ public class GameGUI {
         canvas.setGridDisplay(null);
       	canvas.requestFocus();
       	canvas.setFocusable(true);
+      	
         centerPart.add(canvas, BorderLayout.CENTER);
         
         main.add(centerPart, c);
@@ -149,6 +171,7 @@ public class GameGUI {
         middleRight.setBackground(Color.decode("#0B132B"));
         JLabel titleNext = new JLabel("NEXT TETROMINOES"); 
         titleNext.setFont(new Font("Verdana", Font.PLAIN, 15));
+        
         c2.fill = GridBagConstraints.BOTH;
     	c2.weightx = 1;
     	c2.weighty = 0.1;
@@ -261,6 +284,11 @@ public class GameGUI {
     	}
     	 
     }
+    public void setHighscoreText(String text) {
+    	if (highscore != null) {
+    		highscore.setText(text);
+    	}
+    }
     public void setTimerText(String text) {
     	if (timer != null) {
     		timer.setText(text);
@@ -272,6 +300,11 @@ public class GameGUI {
     		state.setText(text);
     	}
     	 
+    }
+    public void setLinesClearedText(String text) {
+    	if ( linesCleared != null ) {
+    		linesCleared.setText(text);
+    	}
     }
     
     public void InitializeMenuFrame() {

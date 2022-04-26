@@ -38,6 +38,8 @@ public class Game implements KeyListener {
 	        	in.setScoreText("Score : " + sysGame.getScore());
 	        	in.setTimerText("TIME : " + sysGame.getTimer());
 	        	in.setStateText("Difficulty : " + in.getDiff());
+	        	in.setHighscoreText("Highscore : "+sysGame.getHighscore());
+	        	in.setLinesClearedText("LINES CLEARED : " + sysGame.getLinesClearedCount());
 	        	
 	        	//Update game automatically every 60 frames --> 1 second 
 	        	if (sysGame.state == GameState.PLAY) {

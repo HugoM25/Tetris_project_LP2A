@@ -13,6 +13,7 @@ public class GameSystem {
 	
 	//Data 
 	private int score; 
+	private int linesClearedCount; 
 	//Used for the game
 	private Grid grid; 
 	private Tetromino tetromino;
@@ -62,6 +63,7 @@ public class GameSystem {
 		this.timer = new TimeCount(); 
 		this.bestScore = new HighScoreSys();
 		System.out.println(this.bestScore.getHighScore());
+		this.linesClearedCount = 0; 
 	}
 	
 	public void setDifficulty(String diff) {
@@ -84,7 +86,9 @@ public class GameSystem {
 			this.difficulty = Difficulty.EASY;
 		}
 	}
-
+	public int getLinesClearedCount() {
+		return this.linesClearedCount; 
+	}
 	public Grid getGrid() {
 		return grid;
 	}
@@ -150,19 +154,18 @@ public class GameSystem {
 	}
 	public void Restart() {
 		this.grid.resetGrid();
-		setFramesWithDifficulty();
-		state = GameState.PLAY;
-		this.tetromino = this.tetroQueue.getTetro();
-		timer.resetTimer(); 
 		this.score = 0;
+		this.Start();
 	}
 	
 	public void Start() {
 		setFramesWithDifficulty();
 		state = GameState.PLAY;
 		this.tetromino = this.tetroQueue.getTetro();
+		this.tetromino.position = new Vector2D(grid.getWidth()/2,-1); 
 		timer.resetTimer(); 
-		
+		this.isInCombo = false;
+		this.linesClearedCount = 0; 
 	}
 
 	public void Update() {
@@ -205,19 +208,27 @@ public class GameSystem {
 		
 		switch (nblines) {
 			case 4:
-				if (isInCombo) {
+				if (isInCombo == true) {
 					this.score += 1200;
 				}
 				else {
 					this.score += 800;
 					isInCombo = true;
 				}
+				this.linesClearedCount += 4; 
+				break;
+			case 0 :
 				break;
 			default:
 				this.score += nblines*100;
+				this.linesClearedCount += nblines;
 				isInCombo = false;
+				break;
 		}
 		
+	}
+	public int getHighscore() {
+		return this.bestScore.getHighScore();
 	}
 	public Tetromino[] getNextTetrominoes() {
 		return this.tetroQueue.seeNNextTetromino(3);

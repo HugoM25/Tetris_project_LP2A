@@ -55,10 +55,10 @@ public class Grid {
 	}
 	
 	public void attachTetrominoToGrid(Tetromino tetromino) {
-		if (this.isPiecePosOk(tetromino, new Vector2D(0,0))) {
-			for (int j = 0; j < tetromino.arrayPiece[tetromino.orientation].length; j++) {
-				for (int k = 0; k < tetromino.arrayPiece[tetromino.orientation][j].length; k++) {
-					if (tetromino.arrayPiece[tetromino.orientation][j][k] != 0) {
+		for (int j = 0; j < tetromino.arrayPiece[tetromino.orientation].length; j++) {
+			for (int k = 0; k < tetromino.arrayPiece[tetromino.orientation][j].length; k++) {
+				if (tetromino.arrayPiece[tetromino.orientation][j][k] != 0 ) {
+					if (j+tetromino.position.getX()>= 0 && k+tetromino.position.getY() >=0 && this.tab[j+tetromino.position.getX()][k+tetromino.position.getY()] == 0) {
 						this.tab[j+tetromino.position.getX()][k+tetromino.position.getY()] = tetromino.arrayPiece[tetromino.orientation][j][k]; 
 					}
 				}
