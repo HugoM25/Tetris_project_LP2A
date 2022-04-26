@@ -18,7 +18,7 @@ public class GameGUI {
     
     public String[] COLOR_PALETTE = {"#0B132B", "#f7f0f5" , "#1ccad8" , "#db5461" , "#d6e681" , "#4b7f52" }; 
     public Drawing canvas; 
-    public JLabel scoreText, timer, state; 
+    public JLabel scoreText, timer, state, pause, restart; 
     public DispTetroPanel nextT1, nextT2, nextT3;
     
     private String diff;
@@ -43,6 +43,7 @@ public class GameGUI {
     	GridBagConstraints c = new GridBagConstraints(); 
     	GridBagConstraints c2 = new GridBagConstraints();
     	GridBagConstraints c3 = new GridBagConstraints();
+    	GridBagConstraints c4 = new GridBagConstraints();
     	
     	//The layout panels 
     	JPanel header = new JPanel(); 
@@ -81,10 +82,11 @@ public class GameGUI {
         
         c3.gridwidth = 1;
         c3.weightx = 1; 
-        c3.weighty = 0.5;
+        c3.weighty = 0.3;
         c3.gridy = 0;
-        c3.gridx = 0; 
+        c3.gridx = 0;
         scoreText = new JLabel("Score : 0");
+        scoreText.setMaximumSize( new Dimension(  10, 10));
         scoreText.setForeground(Color.WHITE);
         scoreText.setFont(new Font("Verdana", Font.PLAIN, 20));
         leftPart.add(scoreText,c3);
@@ -92,7 +94,7 @@ public class GameGUI {
         
         c3.gridwidth = 1;
         c3.weightx = 1; 
-        c3.weighty = 0.5;
+        c3.weighty = 0.3;
         c3.gridy = 1;
         c3.gridx = 0; 
         timer = new JLabel("TIMER : 0");
@@ -102,7 +104,7 @@ public class GameGUI {
         
         c3.gridwidth = 1;
         c3.weightx = 1; 
-        c3.weighty = 0.5;
+        c3.weighty = 0.4;
         c3.gridy = 2;
         c3.gridx = 0; 
         state = new JLabel("Difficulty : NULL");
@@ -188,14 +190,38 @@ public class GameGUI {
         upRight.add(titleNext); 
         titleNext.setForeground(Color.WHITE);
         
+        c4.fill = GridBagConstraints.CENTER;
+        c4.weightx = 1; 
+        c4.weighty = 0.2;
+        c4.gridy = 1;
+        c4.gridx = 0; 
+        pause = new JLabel("PAUSE (press: p)");
+        pause.setForeground(Color.WHITE);
+        pause.setFont(new Font("Verdana", Font.PLAIN, 15));
+        downRight.add(pause,c4);
+        
+        c4.weighty = 0.2;
+        c4.gridy = 	2;
+        restart = new JLabel("RESTART (press: r)");
+        restart.setForeground(Color.WHITE);
+        restart.setFont(new Font("Verdana", Font.PLAIN, 15));
+        downRight.add(restart,c4);
+        
         JPanel empty = new JPanel();
         empty.setBackground(Color.decode("#0B132B"));
         rightPart.add(empty,c2);
+        
+        c4.weighty = 0.6;
+        c4.gridy = 0;
+        JPanel empty2 = new JPanel();
+        empty.setBackground(Color.decode("#0B132B"));
+        downRight.add(empty2,c4);
         
         
         main.add(rightPart, c);
         c2.weighty = 0.3;
         c2.gridy =4;
+        
         //The footer 
         footer = new JPanel(new GridBagLayout());
         footer.setBackground(Color.decode("#0B132B"));
@@ -252,7 +278,7 @@ public class GameGUI {
     	
     	frame = new JFrame("TETRIS MENU");    
     	setF(frame);
-    	frame.setSize(350, 350);
+    	frame.setSize(500, 350);
     	frame.setLayout(new GridLayout(5, 1));
         
         // Define panels
@@ -266,10 +292,15 @@ public class GameGUI {
     	
     	
     	label2 = new JLabel("RULES", JLabel.CENTER);
+    	
         label.setFont(new Font("Serif", Font.BOLD, 40));
-        label1.setFont(new Font("Serif", Font.BOLD, 20)); 
-        label2.setFont(new Font("Serif", Font.BOLD, 40)); 
-         
+        label.setForeground(Color.WHITE);
+        
+        label1.setFont(new Font("Serif", Font.BOLD, 20));
+        label1.setForeground(Color.WHITE);
+        
+        label2.setFont(new Font("Serif", Font.BOLD, 40));
+        label2.setForeground(Color.WHITE); 
              
     	// Define buttons
     	playB = new JButton(" Play ");
@@ -353,7 +384,7 @@ public class GameGUI {
     	panel3 = new JPanel();
     	
 
-    	label3 = new JLabel("<html>Tetris is primarily made up of a field of play in which pieces of various"
+    	label3 = new JLabel("<html> &emsp;&emsp;Tetris is primarily made up of a field of play in which pieces of various"
     			+ " geometric shapes, known as “tetrominoes (made of four connected squares)”, descend from the"
     			+ " top of the field. During this descent, you can move and rotate the pieces until they reach"
     			+ " the bottom of the field or land on a piece that was placed before it. You can neither slow"
@@ -363,7 +394,10 @@ public class GameGUI {
     			+ " a certain number of points moves you up a level, which increases the number of points granted per"
     			+ " completed line. If you cannot make the blocks disappear quickly enough, the field will start to fill,"
     			+ " and when the pieces reach the top of the field and prevent the arrival of additional pieces, the game"
-    			+ " ends. At the end of each game, you receives a score based on the number of lines that have been completed.</html>");
+    			+ " ends. At the end of each game, you receives a score based on the number of lines that have been completed.<html>");
+    	
+    	label3.setForeground(Color.WHITE);
+    	label3.setHorizontalTextPosition(SwingConstants.RIGHT);
     	
 		frules.setLayout(new GridLayout(3, 1));	    
 		returnB = new JButton("Return");
@@ -388,11 +422,11 @@ public class GameGUI {
 		f.pack();
 		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	    f.setLocationRelativeTo(null);
-	    f.getContentPane().setBackground(Color.decode("#77E4B4"));
+	    f.getContentPane().setBackground(Color.decode("#0B132B"));
 	}
 	
 	public void setP(JPanel p) {
-		p.setBackground(Color.decode("#77E4B4"));
+		p.setBackground(Color.decode("#0B132B"));
 	}
 	
 	public void setB(JButton b) {
@@ -402,8 +436,8 @@ public class GameGUI {
 	public void setRB(JRadioButton rb) {
 		difficulty.add(rb);
 		panel2.add(rb);
-		rb.setBackground(Color.ORANGE);
-		rb.setBackground(Color.decode("#77E4B4"));
+		rb.setBackground(Color.decode("#0B132B"));
+		rb.setForeground(Color.WHITE);
 		rb.setFont(new Font("Serif", Font.BOLD, 20));
 	}
 }
