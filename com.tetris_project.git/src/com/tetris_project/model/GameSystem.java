@@ -24,6 +24,7 @@ public class GameSystem {
 	private int nbFramesBetweenUpdates;
 	
 	private TimeCount timer; 
+	private HighScoreSys bestScore; 
 	
 	public int getScore() {
 		return score;
@@ -59,6 +60,8 @@ public class GameSystem {
 		this.nbFramesBetweenUpdates = 60; 
 		this.difficulty = Difficulty.LEGEND;
 		this.timer = new TimeCount(); 
+		this.bestScore = new HighScoreSys();
+		System.out.println(this.bestScore.getHighScore());
 	}
 	
 	public void setDifficulty(String diff) {
@@ -141,12 +144,17 @@ public class GameSystem {
 	public Difficulty getDifficulty() {
 		return this.difficulty;
 	}
+	public void GameOver() {
+		state = GameState.END;
+		this.bestScore.CheckHighScore(score);
+	}
 	public void Restart() {
+		this.grid.resetGrid();
 		setFramesWithDifficulty();
 		state = GameState.PLAY;
-		this.grid.resetGrid();
 		this.tetromino = this.tetroQueue.getTetro();
 		timer.resetTimer(); 
+		this.score = 0;
 	}
 	
 	public void Start() {
@@ -169,7 +177,7 @@ public class GameSystem {
 			else {
 				//Check if game is lost
 				if (this.tetromino.position.getY() < 0) {
-					state = GameState.END;
+					GameOver();
 				}
 				//Anchors it
 				grid.attachTetrominoToGrid(tetromino);
