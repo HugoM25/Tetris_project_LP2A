@@ -59,6 +59,9 @@ public class DispTetroPanel extends JPanel {
 	    				if (this.tetromino.arrayPiece[0][i][j] >= 1 && this.tetromino.arrayPiece[0][i][j] <= 7) {
 		        			graphic2d.setColor(COLOR_PALETTE[this.tetromino.arrayPiece[0][i][j]]);
 	        				graphic2d.fillRect(i*size + this.marginX, j*size + this.marginY, size, size);
+	        				
+	        				graphic2d.setColor(Color.BLACK);
+	                		graphic2d.drawRect(i*size + this.marginX, j*size + this.marginY, size, size);
 		        		}
 		        		else {
 		        			graphic2d.setColor(Color.BLACK);
