@@ -23,6 +23,8 @@ public class GameSystem {
 	private Difficulty difficulty; 
 	private int nbFramesBetweenUpdates;
 	
+	private TimeCount timer; 
+	
 	public int getScore() {
 		return score;
 	}
@@ -40,6 +42,9 @@ public class GameSystem {
 	public int getNbFramesBetweenUpdates() {
 		return this.nbFramesBetweenUpdates; 
 	}
+	public TimeCount getTimer() {
+		return this.timer;
+	}
 	
 	public GameSystem(int x, int y, Tetromino tetromino) {
 		this.grid = new Grid(x,y); 
@@ -53,6 +58,7 @@ public class GameSystem {
 		this.isInCombo = false;
 		this.nbFramesBetweenUpdates = 60; 
 		this.difficulty = Difficulty.LEGEND;
+		this.timer = new TimeCount(); 
 	}
 
 	public Grid getGrid() {
@@ -119,11 +125,11 @@ public class GameSystem {
 		setFramesWithDifficulty();
 		state = GameState.PLAY;
 		this.tetromino = this.tetroQueue.getTetro();
+		timer.resetTimer(); 
 		
 	}
 
 	public void Update() {
-		
 		//Handle piece movement
 		if (this.tetromino != null) {		
 			

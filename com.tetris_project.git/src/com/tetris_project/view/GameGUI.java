@@ -284,6 +284,12 @@ public class GameGUI {
         JRadioButton radio3 = new JRadioButton("3", false);
         JRadioButton radio4 = new JRadioButton("4", false);
         JRadioButton radio5 = new JRadioButton("5", false); 
+        difficulty.add(radio1);
+        difficulty.add(radio2);
+        difficulty.add(radio3);
+        difficulty.add(radio4);
+        difficulty.add(radio5);
+        
         setP(panel);
         setP(panel1);
         setP(panel2);

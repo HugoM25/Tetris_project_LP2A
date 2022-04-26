@@ -48,7 +48,9 @@ public class Game implements KeyListener {
 	        		else {
 	        			counter++; 
 	        		}
+	        		sysGame.getTimer().updateTimer(1000/FPS);
 	        	}
+	        	
 	        }
 	     }, 0, (long) (1000/FPS));
 	    
