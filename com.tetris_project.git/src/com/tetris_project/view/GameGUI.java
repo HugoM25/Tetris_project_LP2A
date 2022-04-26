@@ -312,11 +312,11 @@ public class GameGUI {
         
         // Define radio buttons
         difficulty = new ButtonGroup();     
-        JRadioButton radio1 = new JRadioButton("1", true);
-        JRadioButton radio2 = new JRadioButton("2", false);
-        JRadioButton radio3 = new JRadioButton("3", false);
-        JRadioButton radio4 = new JRadioButton("4", false);
-        JRadioButton radio5 = new JRadioButton("5", false); 
+        JRadioButton radio1 = new JRadioButton("Easy", true);
+        JRadioButton radio2 = new JRadioButton("Medium", false);
+        JRadioButton radio3 = new JRadioButton("Hard", false);
+        JRadioButton radio4 = new JRadioButton("Pro", false);
+        JRadioButton radio5 = new JRadioButton("Legend", false); 
 
 
         
