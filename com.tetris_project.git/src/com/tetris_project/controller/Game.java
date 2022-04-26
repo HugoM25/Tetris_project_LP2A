@@ -37,7 +37,7 @@ public class Game implements KeyListener {
 	        	in.DisplayNextTetrominoes(sysGame.getNextTetrominoes());
 	        	in.setScoreText("Score : " + sysGame.getScore());
 	        	//in.setTimerText("TIMER : " + sysGame.getTimer());
-	        	in.setStateText("Difficulty : " + sysGame.getDifficulty());
+	        	in.setStateText("Difficulty : " + in.getDiff());
 	        	
 	        	//Update game automatically every 60 frames --> 1 second 
 	        	if (sysGame.state == GameState.PLAY) {
