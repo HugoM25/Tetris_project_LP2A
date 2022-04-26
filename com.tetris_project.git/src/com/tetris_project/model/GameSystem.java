@@ -96,10 +96,10 @@ public class GameSystem {
 				this.nbFramesBetweenUpdates = 60;
 				break;
 			case MEDIUM :
-				this.nbFramesBetweenUpdates = 50;
+				this.nbFramesBetweenUpdates = 40;
 				break; 
 			case PRO :
-				this.nbFramesBetweenUpdates = 40;
+				this.nbFramesBetweenUpdates = 30;
 				break;
 			case LEGEND :
 				this.nbFramesBetweenUpdates = 10;

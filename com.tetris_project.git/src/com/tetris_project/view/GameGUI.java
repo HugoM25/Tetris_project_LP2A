@@ -103,7 +103,7 @@ public class GameGUI {
         c3.weighty = 0.5;
         c3.gridy = 2;
         c3.gridx = 0; 
-        state = new JLabel("STATE : 0");
+        state = new JLabel("Difficulty : NULL");
         state.setForeground(Color.WHITE);
         state.setFont(new Font("Verdana", Font.PLAIN, 20));
         leftPart.add(state,c3);
