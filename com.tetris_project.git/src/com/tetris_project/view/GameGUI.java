@@ -278,7 +278,7 @@ public class GameGUI {
     	
     	frame = new JFrame("TETRIS MENU");    
     	setF(frame);
-    	frame.setSize(350, 350);
+    	frame.setSize(500, 350);
     	frame.setLayout(new GridLayout(5, 1));
         
         // Define panels
@@ -292,10 +292,15 @@ public class GameGUI {
     	
     	
     	label2 = new JLabel("RULES", JLabel.CENTER);
+    	
         label.setFont(new Font("Serif", Font.BOLD, 40));
-        label1.setFont(new Font("Serif", Font.BOLD, 20)); 
-        label2.setFont(new Font("Serif", Font.BOLD, 40)); 
-         
+        label.setForeground(Color.WHITE);
+        
+        label1.setFont(new Font("Serif", Font.BOLD, 20));
+        label1.setForeground(Color.WHITE);
+        
+        label2.setFont(new Font("Serif", Font.BOLD, 40));
+        label2.setForeground(Color.WHITE); 
              
     	// Define buttons
     	playB = new JButton(" Play ");
@@ -374,7 +379,7 @@ public class GameGUI {
     	panel3 = new JPanel();
     	
 
-    	label3 = new JLabel("<html>Tetris is primarily made up of a field of play in which pieces of various"
+    	label3 = new JLabel("<html> &emsp;&emsp;Tetris is primarily made up of a field of play in which pieces of various"
     			+ " geometric shapes, known as “tetrominoes (made of four connected squares)”, descend from the"
     			+ " top of the field. During this descent, you can move and rotate the pieces until they reach"
     			+ " the bottom of the field or land on a piece that was placed before it. You can neither slow"
@@ -384,7 +389,10 @@ public class GameGUI {
     			+ " a certain number of points moves you up a level, which increases the number of points granted per"
     			+ " completed line. If you cannot make the blocks disappear quickly enough, the field will start to fill,"
     			+ " and when the pieces reach the top of the field and prevent the arrival of additional pieces, the game"
-    			+ " ends. At the end of each game, you receives a score based on the number of lines that have been completed.</html>");
+    			+ " ends. At the end of each game, you receives a score based on the number of lines that have been completed.<html>");
+    	
+    	label3.setForeground(Color.WHITE);
+    	label3.setHorizontalTextPosition(SwingConstants.RIGHT);
     	
 		frules.setLayout(new GridLayout(3, 1));	    
 		returnB = new JButton("Return");
@@ -409,11 +417,11 @@ public class GameGUI {
 		f.pack();
 		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	    f.setLocationRelativeTo(null);
-	    f.getContentPane().setBackground(Color.decode("#77E4B4"));
+	    f.getContentPane().setBackground(Color.decode("#0B132B"));
 	}
 	
 	public void setP(JPanel p) {
-		p.setBackground(Color.decode("#77E4B4"));
+		p.setBackground(Color.decode("#0B132B"));
 	}
 	
 	public void setB(JButton b) {
@@ -423,8 +431,8 @@ public class GameGUI {
 	public void setRB(JRadioButton rb) {
 		difficulty.add(rb);
 		panel2.add(rb);
-		rb.setBackground(Color.ORANGE);
-		rb.setBackground(Color.decode("#77E4B4"));
+		rb.setBackground(Color.decode("#0B132B"));
+		rb.setForeground(Color.WHITE);
 		rb.setFont(new Font("Serif", Font.BOLD, 20));
 	}
 }
