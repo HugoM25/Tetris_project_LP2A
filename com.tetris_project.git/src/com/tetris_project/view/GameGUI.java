@@ -19,7 +19,9 @@ public class GameGUI {
     public String[] COLOR_PALETTE = {"#0B132B", "#f7f0f5" , "#1ccad8" , "#db5461" , "#d6e681" , "#4b7f52" }; 
     public Drawing canvas; 
     public JLabel scoreText, timer, state; 
-    public DispTetroPanel nextT1, nextT2, nextT3; 
+    public DispTetroPanel nextT1, nextT2, nextT3;
+    
+    private String diff;
     
     public GameGUI() {
     	InitializeFrames();
@@ -284,12 +286,23 @@ public class GameGUI {
         JRadioButton radio3 = new JRadioButton("3", false);
         JRadioButton radio4 = new JRadioButton("4", false);
         JRadioButton radio5 = new JRadioButton("5", false); 
+
+
+        
+        // Add JRadioButton to the group
         difficulty.add(radio1);
         difficulty.add(radio2);
         difficulty.add(radio3);
         difficulty.add(radio4);
         difficulty.add(radio5);
-        
+ 
+        // Add an action when the button is selected
+        radio1.setActionCommand("Easy");
+        radio2.setActionCommand("Medium");
+        radio3.setActionCommand("Hard");
+        radio4.setActionCommand("Pro");
+        radio5.setActionCommand("Legend");
+  
         setP(panel);
         setP(panel1);
         setP(panel2);
@@ -313,6 +326,7 @@ public class GameGUI {
     		    frame.setVisible(false);
     		    playFrame.setVisible(true);
     		    canvas.requestFocus();
+    		    diff = difficulty.getSelection().getActionCommand();
     		}
     	});
    
@@ -324,6 +338,12 @@ public class GameGUI {
     	});
     }
     
+    public String getDiff() {
+    	return this.diff;
+    }
+    public void setTimeText(String timeText) {
+    	this.timer.setText(timeText);
+    }
     
     public void InitializeRulesFrame() {
     	frules = new JFrame("RULES");

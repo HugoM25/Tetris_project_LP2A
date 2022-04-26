@@ -60,6 +60,27 @@ public class GameSystem {
 		this.difficulty = Difficulty.LEGEND;
 		this.timer = new TimeCount(); 
 	}
+	
+	public void setDifficulty(String diff) {
+		if (diff.equals("Easy")) {
+			this.difficulty = Difficulty.EASY;
+		}
+		else if (diff.equals("Medium")) {
+			this.difficulty = Difficulty.MEDIUM;
+		}
+		else if (diff.equals("Hard")) {
+			this.difficulty = Difficulty.HARD;
+		}
+		else if (diff.equals("Pro")) {
+			this.difficulty = Difficulty.PRO;
+		}
+		else if (diff.equals("Legend")) {
+			this.difficulty = Difficulty.LEGEND;
+		}
+		else {
+			this.difficulty = Difficulty.EASY;
+		}
+	}
 
 	public Grid getGrid() {
 		return grid;
@@ -119,6 +140,13 @@ public class GameSystem {
 	
 	public Difficulty getDifficulty() {
 		return this.difficulty;
+	}
+	public void Restart() {
+		setFramesWithDifficulty();
+		state = GameState.PLAY;
+		this.grid.resetGrid();
+		this.tetromino = this.tetroQueue.getTetro();
+		timer.resetTimer(); 
 	}
 	
 	public void Start() {

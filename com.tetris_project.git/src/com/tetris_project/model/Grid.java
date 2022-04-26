@@ -131,6 +131,14 @@ public class Grid {
 		return indexesToBeRemoved ;
 	}
 	
+	public void resetGrid() {
+		for(int i = 0; i < this.width ; i++) {
+			for(int j = 0; j < this.height; j++) {
+				this.tab[i][j] = 0; 
+			}
+		}
+	}
+	
 	public int getHeight() {
 		return height;
 	}

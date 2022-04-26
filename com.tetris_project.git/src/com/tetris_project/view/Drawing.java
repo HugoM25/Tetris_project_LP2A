@@ -62,6 +62,9 @@ public class Drawing extends JPanel {
 	        		if (gridDisplay[i][j] >= 1 && gridDisplay[i][j] <= 7) {
 	        			graphic2d.setColor(COLOR_PALETTE[gridDisplay[i][j]]);
         				graphic2d.fillRect(i*size + this.marginX, j*size + this.marginY, size, size);
+        				
+        				graphic2d.setColor(Color.BLACK);
+                		graphic2d.drawRect(i*size + this.marginX, j*size + this.marginY, size, size);
 	        		}
 	        		else {
 	        			graphic2d.setColor(Color.BLACK);

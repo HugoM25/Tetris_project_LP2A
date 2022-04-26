@@ -21,13 +21,28 @@ public class TimeCount {
 		this.time += deltaTime;
 	}
 	public String toString() {
-		int tmptime = this.time/1000; 
-		//time is now in seconds therefore :
-		int hours = tmptime % 3600;
-		int min = tmptime % 60 - hours*3600;
-		int seconds = tmptime - hours*3600 - min*60;
+		int tmpTime = Math.round(this.time/1000); 
 		
-		return hours + ":" + min + ":" + seconds;
+		//time is now in seconds therefore :
+		int hours = tmpTime/3600;
+		int min = tmpTime / 60 - hours*3600;
+		int seconds = tmpTime - hours*3600 - min*60;
+		//makes it prettier
+		String hoursS = "" + hours;
+		String minS = "" + min ;
+		String secondsS = "" + seconds; 
+		if (hours < 10) {
+			hoursS = "0" + hoursS; 
+		}
+		if (min < 10) {
+			minS = "0" + minS;
+		}
+		if (seconds < 10) {
+			secondsS = "0" + secondsS;
+		}
+	
+		
+		return hoursS + ":" + minS + ":" + secondsS;
 		
 	}
 }

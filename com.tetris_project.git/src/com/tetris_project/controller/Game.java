@@ -36,8 +36,8 @@ public class Game implements KeyListener {
 	        	in.RefreshPlayFrame(sysGame.showGrid());
 	        	in.DisplayNextTetrominoes(sysGame.getNextTetrominoes());
 	        	in.setScoreText("Score : " + sysGame.getScore());
-	        	//in.setTimerText("TIMER : " + sysGame.getTimer());
-	        	in.setStateText("Difficulty : " + sysGame.getDifficulty());
+	        	in.setTimerText("TIME : " + sysGame.getTimer());
+	        	in.setStateText("Difficulty : " + in.getDiff());
 	        	
 	        	//Update game automatically every 60 frames --> 1 second 
 	        	if (sysGame.state == GameState.PLAY) {
@@ -87,7 +87,8 @@ public class Game implements KeyListener {
 				break;
 			case NOT_STARTED :
 				if (e.getKeyCode() == KeyEvent.VK_S) {
-					sysGame.Start();					
+					sysGame.setDifficulty(in.getDiff());
+					sysGame.Start();
 				}
 				break; 
 			case PAUSE :
@@ -99,6 +100,9 @@ public class Game implements KeyListener {
 				break;
 			default :
 				break;
+		}
+		if (e.getKeyCode() == KeyEvent.VK_R) {
+			sysGame.Restart();
 		}
 		// TODO Auto-generated method stub
 		
