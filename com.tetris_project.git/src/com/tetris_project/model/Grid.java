@@ -89,26 +89,13 @@ public class Grid {
 		return gridDisplay; 
 	}
 	public void removeLineFromGrid(int lineIndex) {
-		//Remove line blocks
-		for( int k = 0; k < this.width; k++ ) {
-			this.tab[k][lineIndex] = 0; 
-		}
-		//Make the other lines fall on this one
 		
-		//Copy grid
-		int[][] gridTmp = new int[this.width][this.height];
-		for (int i = 0; i < this.width; i++) {
-			System.arraycopy(this.tab[i], 0, gridTmp[i], 0, this.height);
-		}
-		//Modify grid
-		for (int i = 0; i < this.width; i++) {
-			for (int j = 0; j < lineIndex; j++) {
-				gridTmp[i][j+1] = this.tab[i][j]; 
+		//Remove lines 
+		for (int j = lineIndex; j > 0; j--) {
+			for(int i = 0; i < this.width; i++) {
+				this.tab[i][j] = this.tab[i][j-1];
 			}
 		}
-		
-		//Update grid
-		this.tab = gridTmp;
 	}
 	public List<Integer> checkForLineToRemove() {
 		int i = 0;
