@@ -18,7 +18,7 @@ public class GameGUI {
     
     public String[] COLOR_PALETTE = {"#0B132B", "#f7f0f5" , "#1ccad8" , "#db5461" , "#d6e681" , "#4b7f52" }; 
     public Drawing canvas; 
-    public JLabel scoreText, timer, state; 
+    public JLabel scoreText, timer, state, pause, restart; 
     public DispTetroPanel nextT1, nextT2, nextT3;
     
     private String diff;
@@ -43,6 +43,7 @@ public class GameGUI {
     	GridBagConstraints c = new GridBagConstraints(); 
     	GridBagConstraints c2 = new GridBagConstraints();
     	GridBagConstraints c3 = new GridBagConstraints();
+    	GridBagConstraints c4 = new GridBagConstraints();
     	
     	//The layout panels 
     	JPanel header = new JPanel(); 
@@ -81,10 +82,11 @@ public class GameGUI {
         
         c3.gridwidth = 1;
         c3.weightx = 1; 
-        c3.weighty = 0.5;
+        c3.weighty = 0.3;
         c3.gridy = 0;
-        c3.gridx = 0; 
+        c3.gridx = 0;
         scoreText = new JLabel("Score : 0");
+        scoreText.setMaximumSize( new Dimension(  10, 10));
         scoreText.setForeground(Color.WHITE);
         scoreText.setFont(new Font("Verdana", Font.PLAIN, 20));
         leftPart.add(scoreText,c3);
@@ -92,7 +94,7 @@ public class GameGUI {
         
         c3.gridwidth = 1;
         c3.weightx = 1; 
-        c3.weighty = 0.5;
+        c3.weighty = 0.3;
         c3.gridy = 1;
         c3.gridx = 0; 
         timer = new JLabel("TIMER : 0");
@@ -102,7 +104,7 @@ public class GameGUI {
         
         c3.gridwidth = 1;
         c3.weightx = 1; 
-        c3.weighty = 0.5;
+        c3.weighty = 0.4;
         c3.gridy = 2;
         c3.gridx = 0; 
         state = new JLabel("Difficulty : NULL");
@@ -188,14 +190,38 @@ public class GameGUI {
         upRight.add(titleNext); 
         titleNext.setForeground(Color.WHITE);
         
+        c4.fill = GridBagConstraints.CENTER;
+        c4.weightx = 1; 
+        c4.weighty = 0.2;
+        c4.gridy = 1;
+        c4.gridx = 0; 
+        pause = new JLabel("PAUSE (press: p)");
+        pause.setForeground(Color.WHITE);
+        pause.setFont(new Font("Verdana", Font.PLAIN, 15));
+        downRight.add(pause,c4);
+        
+        c4.weighty = 0.2;
+        c4.gridy = 	2;
+        restart = new JLabel("RESTART (press: r)");
+        restart.setForeground(Color.WHITE);
+        restart.setFont(new Font("Verdana", Font.PLAIN, 15));
+        downRight.add(restart,c4);
+        
         JPanel empty = new JPanel();
         empty.setBackground(Color.decode("#0B132B"));
         rightPart.add(empty,c2);
+        
+        c4.weighty = 0.6;
+        c4.gridy = 0;
+        JPanel empty2 = new JPanel();
+        empty.setBackground(Color.decode("#0B132B"));
+        downRight.add(empty2,c4);
         
         
         main.add(rightPart, c);
         c2.weighty = 0.3;
         c2.gridy =4;
+        
         //The footer 
         footer = new JPanel(new GridBagLayout());
         footer.setBackground(Color.decode("#0B132B"));

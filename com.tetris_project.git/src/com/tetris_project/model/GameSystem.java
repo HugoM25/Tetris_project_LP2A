@@ -52,7 +52,7 @@ public class GameSystem {
 		this.tetroQueue = new TetroQueue(); 
 		this.isInCombo = false;
 		this.nbFramesBetweenUpdates = 60; 
-		this.difficulty = Difficulty.LEGEND;
+		this.difficulty = Difficulty.EASY;
 	}
 
 	public Grid getGrid() {
