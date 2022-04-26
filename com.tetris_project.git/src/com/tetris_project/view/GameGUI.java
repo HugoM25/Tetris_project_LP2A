@@ -18,7 +18,7 @@ public class GameGUI {
     
     public String[] COLOR_PALETTE = {"#0B132B", "#f7f0f5" , "#1ccad8" , "#db5461" , "#d6e681" , "#4b7f52" }; 
     public Drawing canvas; 
-    public JLabel scoreText; 
+    public JLabel scoreText, timer, state; 
     public DispTetroPanel nextT1, nextT2, nextT3; 
     
     public GameGUI() {
@@ -40,6 +40,7 @@ public class GameGUI {
     	JPanel main = new JPanel(new GridBagLayout());
     	GridBagConstraints c = new GridBagConstraints(); 
     	GridBagConstraints c2 = new GridBagConstraints();
+    	GridBagConstraints c3 = new GridBagConstraints();
     	
     	//The layout panels 
     	JPanel header = new JPanel(); 
@@ -75,10 +76,37 @@ public class GameGUI {
         leftPart.setBackground(Color.decode("#0B132B"));
         main.add(leftPart, c);
         
+        
+        c3.gridwidth = 1;
+        c3.weightx = 1; 
+        c3.weighty = 0.5;
+        c3.gridy = 0;
+        c3.gridx = 0; 
         scoreText = new JLabel("Score : 0");
         scoreText.setForeground(Color.WHITE);
-        scoreText.setFont(new Font("Verdana", Font.PLAIN, 30));
-        leftPart.add(scoreText);
+        scoreText.setFont(new Font("Verdana", Font.PLAIN, 20));
+        leftPart.add(scoreText,c3);
+        
+        
+        c3.gridwidth = 1;
+        c3.weightx = 1; 
+        c3.weighty = 0.5;
+        c3.gridy = 1;
+        c3.gridx = 0; 
+        timer = new JLabel("TIMER : 0");
+        timer.setForeground(Color.WHITE);
+        timer.setFont(new Font("Verdana", Font.PLAIN, 20));
+        leftPart.add(timer,c3);
+        
+        c3.gridwidth = 1;
+        c3.weightx = 1; 
+        c3.weighty = 0.5;
+        c3.gridy = 2;
+        c3.gridx = 0; 
+        state = new JLabel("STATE : 0");
+        state.setForeground(Color.WHITE);
+        state.setFont(new Font("Verdana", Font.PLAIN, 20));
+        leftPart.add(state,c3);
         
               
         //The game grid part
@@ -87,7 +115,6 @@ public class GameGUI {
         c.weighty = 0.90;
         c.gridy = 1;
         c.gridx = 1; 
-        
         centerPart = new JPanel(new BorderLayout());
         centerPart.setBackground(Color.decode("#0B132B"));
        
@@ -203,6 +230,18 @@ public class GameGUI {
     public void setScoreText(String text) {
     	if (scoreText != null) {
     		scoreText.setText(text);
+    	}
+    	 
+    }
+    public void setTimerText(String text) {
+    	if (timer != null) {
+    		timer.setText(text);
+    	}
+    	 
+    }
+    public void setStateText(String text) {
+    	if (state != null) {
+    		state.setText(text);
     	}
     	 
     }

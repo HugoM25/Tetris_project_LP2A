@@ -52,7 +52,7 @@ public class GameSystem {
 		this.tetroQueue = new TetroQueue(); 
 		this.isInCombo = false;
 		this.nbFramesBetweenUpdates = 60; 
-		this.difficulty = Difficulty.UNKNOWN;
+		this.difficulty = Difficulty.LEGEND;
 	}
 
 	public Grid getGrid() {
@@ -102,7 +102,7 @@ public class GameSystem {
 				this.nbFramesBetweenUpdates = 40;
 				break;
 			case LEGEND :
-				this.nbFramesBetweenUpdates = 30;
+				this.nbFramesBetweenUpdates = 10;
 				break;
 			default :
 				this.nbFramesBetweenUpdates = 60;
@@ -110,6 +110,11 @@ public class GameSystem {
 		}
 		
 	}
+	
+	public Difficulty getDifficulty() {
+		return this.difficulty;
+	}
+	
 	public void Start() {
 		setFramesWithDifficulty();
 		state = GameState.PLAY;
