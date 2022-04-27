@@ -212,8 +212,18 @@ public class GameGUI {
         
         upRight.add(titleNext); 
         titleNext.setForeground(Color.WHITE);
-        
         c4.fill = GridBagConstraints.CENTER;
+        c4.weightx = 1; 
+        c4.weighty = 0.6;
+        c4.gridy = 0;
+        c4.gridx = 0; 
+        
+        JLabel startLabel = new JLabel("START (press: s)");
+        startLabel.setForeground(Color.WHITE);
+        startLabel.setFont(new Font("Verdana", Font.PLAIN, 15));
+        downRight.add(startLabel,c4);
+        
+        
         c4.weightx = 1; 
         c4.weighty = 0.2;
         c4.gridy = 1;
@@ -230,15 +240,13 @@ public class GameGUI {
         restart.setFont(new Font("Verdana", Font.PLAIN, 15));
         downRight.add(restart,c4);
         
+        
+        
         JPanel empty = new JPanel();
         empty.setBackground(Color.decode("#0B132B"));
         rightPart.add(empty,c2);
         
-        c4.weighty = 0.6;
-        c4.gridy = 0;
-        JPanel empty2 = new JPanel();
-        empty.setBackground(Color.decode("#0B132B"));
-        downRight.add(empty2,c4);
+        
         
         
         main.add(rightPart, c);
