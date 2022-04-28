@@ -8,13 +8,13 @@ import tetrominoes.*;
 
 public class TetroQueue {
 	
-	private Tetromino bag;
 	private List<Tetromino> queue; 
 	
 	public TetroQueue() {
 		this.queue = new ArrayList<Tetromino>(); 
 		this.fillQueue();
 	}
+	
 	public Tetromino getTetro() {
 		//Get first tetro in queue
 		Tetromino tmpTetro = queue.get(0); 
@@ -27,6 +27,7 @@ public class TetroQueue {
 		//Return the tetro
 		return tmpTetro; 
 	}
+	
 	public void fillQueue() {
 		//Create a bag with every tetromino piece
 		Tetromino[] bag = {new IStyle(), new JStyle(), new LStyle(), new OStyle(), new SStyle(), new TStyle(), new ZStyle()};
@@ -60,5 +61,4 @@ public class TetroQueue {
 		}
 		return nextTetros; 
 	}
-
 }

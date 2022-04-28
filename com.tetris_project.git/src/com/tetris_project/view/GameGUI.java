@@ -1,9 +1,7 @@
 package com.tetris_project.view;
 
 import javax.swing.*;
-
 import tetrominoes.Tetromino;
-
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -28,6 +26,7 @@ public class GameGUI {
     	frame.setVisible(true);
     	
     }
+    
     public void InitializeFrames() {
     	InitializePlayFrame();
     	InitializeMenuFrame();
@@ -40,6 +39,8 @@ public class GameGUI {
     	
     	//The main panel (used for layout)
     	JPanel main = new JPanel(new GridBagLayout());
+    	
+    	//Created new constraints for the 4 part of the game Interface
     	GridBagConstraints c = new GridBagConstraints(); 
     	GridBagConstraints c2 = new GridBagConstraints();
     	GridBagConstraints c3 = new GridBagConstraints();
@@ -66,10 +67,9 @@ public class GameGUI {
         title.setForeground(Color.WHITE);
        
         header.add(title);
-        
         main.add(header,c);
          
-        //The infos on the left
+        //The info on the left + constraints
         c.gridwidth = 1;
         c.weightx = 0.35; 
         c.weighty = 0.90;
@@ -78,7 +78,6 @@ public class GameGUI {
         leftPart = new JPanel(new GridBagLayout());
         leftPart.setBackground(Color.decode("#0B132B"));
         main.add(leftPart, c);
-        
         
         c3.gridwidth = 1;
         c3.weightx = 1; 
@@ -130,10 +129,7 @@ public class GameGUI {
         state.setForeground(Color.WHITE);
         state.setFont(new Font("Verdana", Font.PLAIN, 15));
         leftPart.add(state,c3);
-        
-        
-        
-              
+           
         //The game grid part
         c.gridwidth = 1;
         c.weightx = 0.30; 
@@ -154,7 +150,7 @@ public class GameGUI {
         
         main.add(centerPart, c);
         
-        //The infos on the right
+        //The info on the right + constraints
         c.gridwidth = 1;
         c.weightx = 0.25; 
         c.weighty = 0.90;
@@ -196,6 +192,7 @@ public class GameGUI {
         title.setForeground(Color.WHITE);
         header.add(title);
         
+        //The info on the middle Right + constraints
         nextT1 = new DispTetroPanel();
         c2.weightx = 1;
         c2.weighty = 0.2;
@@ -210,19 +207,20 @@ public class GameGUI {
         nextT3 = new DispTetroPanel();
         middleRight.add(nextT3, c2);
         
+        //The info on the up Right + constraints
         upRight.add(titleNext); 
         titleNext.setForeground(Color.WHITE);
+        
+        //The info on the down Right + constraints
         c4.fill = GridBagConstraints.CENTER;
         c4.weightx = 1; 
         c4.weighty = 0.6;
         c4.gridy = 0;
         c4.gridx = 0; 
-        
         JLabel startLabel = new JLabel("START (press: s)");
         startLabel.setForeground(Color.WHITE);
         startLabel.setFont(new Font("Verdana", Font.PLAIN, 15));
-        downRight.add(startLabel,c4);
-        
+        downRight.add(startLabel,c4);   
         
         c4.weightx = 1; 
         c4.weighty = 0.2;
@@ -238,16 +236,11 @@ public class GameGUI {
         restart = new JLabel("RESTART (press: r)");
         restart.setForeground(Color.WHITE);
         restart.setFont(new Font("Verdana", Font.PLAIN, 15));
-        downRight.add(restart,c4);
-        
-        
+        downRight.add(restart,c4);    
         
         JPanel empty = new JPanel();
         empty.setBackground(Color.decode("#0B132B"));
         rightPart.add(empty,c2);
-        
-        
-        
         
         main.add(rightPart, c);
         c2.weighty = 0.3;
@@ -278,6 +271,7 @@ public class GameGUI {
 		canvas.setGridDisplay(gridDisplay);
     	canvas.repaint();
     }
+    
     public void DisplayNextTetrominoes(Tetromino[] tetrominoes) {
     	nextT1.setTetromino(tetrominoes[0]);
     	nextT2.setTetromino(tetrominoes[1]);
@@ -286,29 +280,34 @@ public class GameGUI {
     	nextT2.repaint();
     	nextT3.repaint();
     }
+    
     public void setScoreText(String text) {
     	if (scoreText != null) {
     		scoreText.setText(text);
     	}
     	 
     }
+    
     public void setHighscoreText(String text) {
     	if (highscore != null) {
     		highscore.setText(text);
     	}
     }
+    
     public void setTimerText(String text) {
     	if (timer != null) {
     		timer.setText(text);
     	}
     	 
     }
+    
     public void setStateText(String text) {
     	if (state != null) {
     		state.setText(text);
     	}
     	 
     }
+    
     public void setLinesClearedText(String text) {
     	if ( linesCleared != null ) {
     		linesCleared.setText(text);
@@ -317,6 +316,7 @@ public class GameGUI {
     
     public void InitializeMenuFrame() {
     	
+    	// Set the principal frame
     	frame = new JFrame("TETRIS MENU");    
     	setF(frame);
     	frame.setSize(500, 350);
@@ -330,8 +330,6 @@ public class GameGUI {
     	// Define labels
     	label = new JLabel("TETRIS GAME", JLabel.CENTER);
     	label1 = new JLabel("Choose a difficulty :", JLabel.CENTER);
-    	
-    	
     	label2 = new JLabel("RULES", JLabel.CENTER);
     	
         label.setFont(new Font("Serif", Font.BOLD, 40));
@@ -359,15 +357,6 @@ public class GameGUI {
         JRadioButton radio4 = new JRadioButton("Pro", false);
         JRadioButton radio5 = new JRadioButton("Legend", false); 
 
-
-        
-        // Add JRadioButton to the group
-        difficulty.add(radio1);
-        difficulty.add(radio2);
-        difficulty.add(radio3);
-        difficulty.add(radio4);
-        difficulty.add(radio5);
- 
         // Add an action when the button is selected
         radio1.setActionCommand("Easy");
         radio2.setActionCommand("Medium");
@@ -375,6 +364,7 @@ public class GameGUI {
         radio4.setActionCommand("Pro");
         radio5.setActionCommand("Legend");
   
+        //set the different objects
         setP(panel);
         setP(panel1);
         setP(panel2);
@@ -393,6 +383,7 @@ public class GameGUI {
         frame.add(label1);
         frame.add(panel2);
         
+        // ActionListener is for knowing what he have to do when we push the button
         playB.addActionListener( new ActionListener()	{
     		public void actionPerformed(ActionEvent ae) {
     		    frame.setVisible(false);
@@ -413,6 +404,7 @@ public class GameGUI {
     public String getDiff() {
     	return this.diff;
     }
+    
     public void setTimeText(String timeText) {
     	this.timer.setText(timeText);
     }
@@ -423,7 +415,6 @@ public class GameGUI {
     	frules.setSize(700, 500);
     	
     	panel3 = new JPanel();
-    	
 
     	label3 = new JLabel("<html> &emsp;&emsp;Tetris is primarily made up of a field of play in which pieces of various"
     			+ " geometric shapes, known as “tetrominoes (made of four connected squares)”, descend from the"
@@ -451,7 +442,6 @@ public class GameGUI {
 	    
 	    returnB.addActionListener( new ActionListener()	{
     		public void actionPerformed(ActionEvent ae) {
-
     		    frules.setVisible(false);
     		    frame.setVisible(true);  
     		}

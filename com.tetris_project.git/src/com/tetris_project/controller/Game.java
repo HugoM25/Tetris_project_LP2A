@@ -5,7 +5,6 @@ import java.awt.event.KeyListener;
 import java.util.Timer;
 import java.util.TimerTask;
 
-import com.tetris_project.model.Difficulty;
 import com.tetris_project.model.GameState;
 import com.tetris_project.model.GameSystem;
 import com.tetris_project.view.GameGUI;

@@ -14,9 +14,7 @@ public class DispTetroPanel extends JPanel {
 	private int DIM_MAX = 4; 
 	private int size; 
 	public static final Color[] COLOR_PALETTE = { Color.WHITE, Color.decode("#1ccad8"), Color.decode("#d6e681"), Color.decode("#f1a208"), 
-			  Color.decode("#4b7f52") , Color.decode("#db5461"), Color.decode("#9381ff"), 
-			  Color.decode("#246eb9")
-			}; 
+			  Color.decode("#4b7f52") , Color.decode("#db5461"), Color.decode("#9381ff"), Color.decode("#246eb9") }; 
 	
 	private int marginX; 
 	private int marginY;
@@ -30,7 +28,6 @@ public class DispTetroPanel extends JPanel {
 		return tetromino;
 	}
 
-
 	public void setTetromino(Tetromino tetromino) {
 		this.tetromino = tetromino;
 	}
@@ -38,9 +35,7 @@ public class DispTetroPanel extends JPanel {
 		this.size =(int) this.getSize().height/DIM_MAX;
 	}
 
-
 	public void paint(Graphics g) {
-		
 	
 	    Graphics2D graphic2d = (Graphics2D) g; 
 	    //Create black background
@@ -50,8 +45,7 @@ public class DispTetroPanel extends JPanel {
 	    //Display tetro if any
 	    if (this.tetromino != null) {
 	    	findGoodSize();
-	    	findMargins();
-	    	
+	    	findMargins();	
 	    	 
 	    	for(int i = 0; i < DIM_MAX; i++) {
 	    		for (int j = 0; j < DIM_MAX; j++) {
@@ -62,16 +56,14 @@ public class DispTetroPanel extends JPanel {
 	        				
 	        				graphic2d.setColor(Color.BLACK);
 	                		graphic2d.drawRect(i*size + this.marginX, j*size + this.marginY, size, size);
-		        		}
-		        		else {
+	    				}else {
 		        			graphic2d.setColor(Color.BLACK);
 	        				graphic2d.fillRect(i*size + this.marginX, j*size + this.marginY, size, size);
 	        				
 	        				graphic2d.setColor(Color.WHITE);
 	                		graphic2d.drawRect(i*size + this.marginX, j*size + this.marginY, size, size);
 		        		}
-	    			}
-	    			else {
+	    			}else {
 	    				graphic2d.setColor(Color.BLACK);
         				graphic2d.fillRect(i*size + this.marginX, j*size + this.marginY, size, size);
         				
@@ -80,7 +72,6 @@ public class DispTetroPanel extends JPanel {
 	        		}
 	    		}
 	    	}
-	    }
-	    
+	    } 
 	}
 }
