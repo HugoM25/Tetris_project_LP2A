@@ -19,13 +19,14 @@ public class Drawing extends JPanel {
 												  Color.decode("#4b7f52") , Color.decode("#db5461"), Color.decode("#9381ff"), 
 												  Color.decode("#246eb9")
 												}; 
-	public int DIMX = 10;
-	public int DIMY = 20;
+	private int DIMX;
+	private int DIMY;
 	
-	public int size = 10; 
-	public int marginX = 0;
-	public int marginY = 0;
+	private int size; 
+	private int marginX;
+	private int marginY;
 	
+	//Calculate ideal size base on the height of the panel 
 	public void findGoodSize() {
 		this.size =(int) this.getSize().height/20;
 	}
@@ -34,7 +35,11 @@ public class Drawing extends JPanel {
 		this.marginY = (int) ((this.getSize().height) - this.size*DIMY)/2;
 	}
 	public Drawing() {
-
+		this.DIMX = 10;
+		this.DIMY = 20;
+		this.size = 10;
+		this.marginX = 0;
+		this.marginY = 0;
 	}
 	public int[][] getGridDisplay() {
 		return gridDisplay;

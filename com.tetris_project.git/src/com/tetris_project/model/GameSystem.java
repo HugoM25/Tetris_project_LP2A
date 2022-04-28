@@ -107,9 +107,13 @@ public class GameSystem {
 	}
 	
 	public void rotateTetroLeft() {
+		//Check if we have any tetromino to rotate
 		if (this.tetromino != null) {
+			
+			//Create a clone of the tetromino and try to rotate it
 			Tetromino tetrominoTest = new Tetromino(this.tetromino); 
 			tetrominoTest.Rotate(-1);
+			//If the rotation is ok then rotate the original tetromino
 			if (grid.isPiecePosOk(tetrominoTest, new Vector2D(0,0))) {
 				this.tetromino.Rotate(-1); 
 			}
@@ -142,7 +146,6 @@ public class GameSystem {
 				this.nbFramesBetweenUpdates = 60;
 				break;
 		}
-		
 	}
 	
 	public Difficulty getDifficulty() {
@@ -208,6 +211,7 @@ public class GameSystem {
 		
 		switch (nblines) {
 			case 4:
+				
 				if (isInCombo == true) {
 					this.score += 1200;
 				}

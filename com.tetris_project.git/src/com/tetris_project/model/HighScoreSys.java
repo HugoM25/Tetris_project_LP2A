@@ -37,6 +37,7 @@ public class HighScoreSys {
         while ((st = br.readLine()) != null) {
             this.HighScoreVal = Integer.parseInt(st); 
         }
+        br.close();
 	}
 	
 	public void CheckHighScore(int newScore) {
