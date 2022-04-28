@@ -18,7 +18,7 @@ public class DispTetroPanel extends JPanel {
 	private static final Color[] COLOR_PALETTE = { Color.WHITE, Color.decode("#1ccad8"), Color.decode("#d6e681"), Color.decode("#f1a208"), 
 			  Color.decode("#4b7f52") , Color.decode("#db5461"), Color.decode("#9381ff"), 
 			  Color.decode("#246eb9")
-			}; 
+	}; 
 	
 	private int marginX; 
 	private int marginY;
