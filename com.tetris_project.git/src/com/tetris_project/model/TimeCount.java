@@ -20,9 +20,9 @@ public class TimeCount {
 	public void updateTimer(int deltaTime) {
 		this.time += deltaTime;
 	}
+	//Use the toString method to display easily the timer
 	public String toString() {
 		int tmpTime = Math.round(this.time/1000); 
-		
 		//time is now in seconds therefore :
 		int hours = tmpTime/3600;
 		int min = tmpTime / 60 - hours*3600;
@@ -31,6 +31,7 @@ public class TimeCount {
 		String hoursS = "" + hours;
 		String minS = "" + min ;
 		String secondsS = "" + seconds; 
+		//add a 0 if value is not 2 characters long
 		if (hours < 10) {
 			hoursS = "0" + hoursS; 
 		}
@@ -40,8 +41,6 @@ public class TimeCount {
 		if (seconds < 10) {
 			secondsS = "0" + secondsS;
 		}
-	
-		
 		return hoursS + ":" + minS + ":" + secondsS;
 		
 	}

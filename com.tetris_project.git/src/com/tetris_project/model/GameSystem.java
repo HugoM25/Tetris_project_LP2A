@@ -2,7 +2,6 @@ package com.tetris_project.model;
 
 
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
@@ -67,6 +66,7 @@ public class GameSystem {
 	}
 	
 	public void setDifficulty(String diff) {
+		//Set the difficulty based on the active radioButton string
 		if (diff.equals("Easy")) {
 			this.difficulty = Difficulty.EASY;
 		}
@@ -208,10 +208,8 @@ public class GameSystem {
 	public void addScoreLines(List<Integer> indexesToBeRemoved) {
 		
 		int nblines = indexesToBeRemoved.size();
-		
 		switch (nblines) {
 			case 4:
-				
 				if (isInCombo == true) {
 					this.score += 1200;
 				}

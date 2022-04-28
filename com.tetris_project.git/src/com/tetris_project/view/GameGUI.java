@@ -69,7 +69,7 @@ public class GameGUI {
         
         main.add(header,c);
          
-        //The infos on the left
+        //The info on the left
         c.gridwidth = 1;
         c.weightx = 0.35; 
         c.weighty = 0.90;
