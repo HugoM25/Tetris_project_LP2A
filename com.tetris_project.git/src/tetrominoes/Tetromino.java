@@ -14,12 +14,14 @@ public class Tetromino {
 		this.arrayPiece = arrayPiece;
 		this.colorIndex =1; 
 	}
+	
 	public Tetromino() {
 		this.position = new Vector2D(); 
 		this.orientation = 0; 
 		this.arrayPiece = new int[5][5][5]; 
 		this.colorIndex =1; 
 	}
+	
 	public Tetromino(Tetromino tetromino) {
 		this.position = new Vector2D(tetromino.position); 
 		this.orientation = tetromino.orientation; 
@@ -33,13 +35,13 @@ public class Tetromino {
 		//Handle out of bounds rotations
 		if ( rotaTest < 0) {
 			rotaTest = 3;
-		}
-		else if (rotaTest  > 3) {
+		}else if (rotaTest  > 3) {
 			rotaTest = 0; 
 		}
 		//Rotate 
 		this.orientation = rotaTest; 
 	}	
+	
 	public void Move(Vector2D direction) {
 		position.add(direction);
 	}

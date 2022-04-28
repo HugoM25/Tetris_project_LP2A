@@ -46,6 +46,7 @@ public class HighScoreSys {
 			this.writeHighScore();
 		}
 	}
+	
 	public int getHighScore() {
 		return this.HighScoreVal;
 	}

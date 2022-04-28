@@ -1,6 +1,7 @@
 package com.tetris_project.model;
 
 public class TimeCount {
+	
 	private int time;
 
 	public int getTime() {
@@ -14,13 +15,15 @@ public class TimeCount {
 	public TimeCount(){
 		this.time = 0; 
 	}
+	
 	public void resetTimer() {
 		this.time = 0; 
 	}
+	
 	public void updateTimer(int deltaTime) {
 		this.time += deltaTime;
 	}
-	//Use the toString method to display easily the timer
+
 	public String toString() {
 		int tmpTime = Math.round(this.time/1000); 
 		//time is now in seconds therefore :
@@ -41,6 +44,7 @@ public class TimeCount {
 		if (seconds < 10) {
 			secondsS = "0" + secondsS;
 		}
+
 		return hoursS + ":" + minS + ":" + secondsS;
 		
 	}

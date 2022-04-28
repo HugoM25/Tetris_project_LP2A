@@ -15,6 +15,7 @@ public class Grid {
 		this.width = width; 
 		this.tab = new int[height][width]; 
 	}
+	
 	public Grid() {
 		this.height = 20; 
 		this.width = 10; 
@@ -42,11 +43,9 @@ public class Grid {
 					//If squares are outside the grid array then the piece can't be placed
 					if (tetromino.position.getX()+deplacement.getX()+i < 0 || tetromino.position.getX()+deplacement.getX()+i >= this.width) {
 						return false;
-					}
-					else if (tetromino.position.getY()+deplacement.getY()+j < 0 || tetromino.position.getY()+deplacement.getY()+j >= this.height) {
+					}else if (tetromino.position.getY()+deplacement.getY()+j < 0 || tetromino.position.getY()+deplacement.getY()+j >= this.height) {
 						return false; 
-					}
-					else if (this.tab[tetromino.position.getX()+i+deplacement.getX()][tetromino.position.getY()+j+deplacement.getY()] != 0 ) {
+					}else if (this.tab[tetromino.position.getX()+i+deplacement.getX()][tetromino.position.getY()+j+deplacement.getY()] != 0 ) {
 						return false; 
 					}
 				}
@@ -94,6 +93,7 @@ public class Grid {
 		}
 		return gridDisplay; 
 	}
+	
 	public void removeLineFromGrid(int lineIndex) {
 		
 		//Remove lines and make the other lines fall on it
@@ -103,6 +103,7 @@ public class Grid {
 			}
 		}
 	}
+	
 	public List<Integer> checkForLineToRemove() {
 		int i = 0;
 		List<Integer> indexesToBeRemoved = new ArrayList<Integer>();  
@@ -132,14 +133,16 @@ public class Grid {
 	public int getHeight() {
 		return height;
 	}
+	
 	public void setHeight(int height) {
 		this.height = height;
 	}
+	
 	public int getWidth() {
 		return width;
 	}
+	
 	public void setWidth(int width) {
 		this.width = width;
 	} 
-	
 }

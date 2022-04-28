@@ -1,12 +1,8 @@
 package com.tetris_project.model;
 
-
-
 import java.util.List;
-import java.util.Random;
 
 import tetrominoes.*;
-
 
 public class GameSystem {
 	
@@ -29,6 +25,7 @@ public class GameSystem {
 	public int getScore() {
 		return score;
 	}
+	
 	public void setScore(int score) {
 		this.score = score;
 	}
@@ -36,6 +33,7 @@ public class GameSystem {
 	public Tetromino getTetromino() {
 		return tetromino;
 	}
+	
 	public void setTetromino(Tetromino tetromino) {
 		this.tetromino = tetromino;
 	}
@@ -43,6 +41,7 @@ public class GameSystem {
 	public int getNbFramesBetweenUpdates() {
 		return this.nbFramesBetweenUpdates; 
 	}
+	
 	public TimeCount getTimer() {
 		return this.timer;
 	}
@@ -52,6 +51,7 @@ public class GameSystem {
 		this.tetromino = tetromino; 
 		state = GameState.NOT_STARTED; 
 	}
+	
 	public GameSystem() {
 		this.grid = new Grid(); 
 		state = GameState.NOT_STARTED;
@@ -61,7 +61,6 @@ public class GameSystem {
 		this.difficulty = Difficulty.LEGEND;
 		this.timer = new TimeCount(); 
 		this.bestScore = new HighScoreSys();
-		System.out.println(this.bestScore.getHighScore());
 		this.linesClearedCount = 0; 
 	}
 	
@@ -69,37 +68,37 @@ public class GameSystem {
 		//Set the difficulty based on the active radioButton string
 		if (diff.equals("Easy")) {
 			this.difficulty = Difficulty.EASY;
-		}
-		else if (diff.equals("Medium")) {
+		}else if (diff.equals("Medium")) {
 			this.difficulty = Difficulty.MEDIUM;
-		}
-		else if (diff.equals("Hard")) {
+		}else if (diff.equals("Hard")) {
 			this.difficulty = Difficulty.HARD;
-		}
-		else if (diff.equals("Pro")) {
+		}else if (diff.equals("Pro")) {
 			this.difficulty = Difficulty.PRO;
-		}
-		else if (diff.equals("Legend")) {
+		}else if (diff.equals("Legend")) {
 			this.difficulty = Difficulty.LEGEND;
-		}
-		else {
+		}else {
 			this.difficulty = Difficulty.EASY;
 		}
 	}
+	
 	public int getLinesClearedCount() {
 		return this.linesClearedCount; 
 	}
+	
 	public Grid getGrid() {
 		return grid;
 	}
+	
 	public void setGrid(Grid grid) {
 		this.grid = grid;
 	}
+	
 	public void moveTetroLeft() {
 		if (this.tetromino != null && grid.isPiecePosOk(tetromino, new Vector2D(-1,0))) {
 			this.tetromino.position.add(new Vector2D(-1,0));
 		}
 	}
+	
 	public void moveTetroRight() {
 		if (this.tetromino != null && grid.isPiecePosOk(tetromino, new Vector2D(1,0))) {
 			this.tetromino.position.add(new Vector2D(1,0));
@@ -119,15 +118,18 @@ public class GameSystem {
 			}
 		}
 	}
+	
 	public int[][] showGrid(){
 		return this.grid.gridToDisplay(this.tetromino);
 		
 	}
+	
 	public void hardDrop() {
 		while (this.tetromino != null) {
 			this.Update();
 		}
 	}
+	
 	public void setFramesWithDifficulty() {
 		switch(this.difficulty) {
 			case EASY :
@@ -151,10 +153,12 @@ public class GameSystem {
 	public Difficulty getDifficulty() {
 		return this.difficulty;
 	}
+	
 	public void GameOver() {
 		state = GameState.END;
 		this.bestScore.CheckHighScore(score);
 	}
+	
 	public void Restart() {
 		this.grid.resetGrid();
 		this.score = 0;
@@ -179,8 +183,7 @@ public class GameSystem {
 			if (grid.isPiecePosOk(this.tetromino, new Vector2D(0,1))) {
 				//Apply the change to the tetromino
 			    this.tetromino.position.add(new Vector2D(0,1));;
-			}
-			else {
+			}else {
 				//Check if game is lost
 				if (this.tetromino.position.getY() < 0) {
 					GameOver();
@@ -197,8 +200,7 @@ public class GameSystem {
 				addScoreLines(indexes);
 				
 			}
-		}
-		else {
+		}else {
 			//Spawn a new tetromino
 			this.tetromino = this.tetroQueue.getTetro(); 
 			this.tetromino.position = new Vector2D(grid.getWidth()/2,-1); 
@@ -229,9 +231,11 @@ public class GameSystem {
 		}
 		
 	}
+	
 	public int getHighscore() {
 		return this.bestScore.getHighScore();
 	}
+	
 	public Tetromino[] getNextTetrominoes() {
 		return this.tetroQueue.seeNNextTetromino(3);
 	}

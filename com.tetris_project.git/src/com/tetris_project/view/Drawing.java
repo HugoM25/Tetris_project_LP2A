@@ -1,15 +1,9 @@
 package com.tetris_project.view;
-import java.awt.Canvas;
+
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
-import java.awt.event.MouseMotionListener;
 
-import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 public class Drawing extends JPanel {
@@ -18,9 +12,10 @@ public class Drawing extends JPanel {
 	public static final Color[] COLOR_PALETTE = { Color.WHITE, Color.decode("#1ccad8"), Color.decode("#d6e681"), Color.decode("#f1a208"), 
 												  Color.decode("#4b7f52") , Color.decode("#db5461"), Color.decode("#9381ff"), 
 												  Color.decode("#246eb9")
-												}; 
+	}; 
 	private int DIMX;
 	private int DIMY;
+
 	
 	private int size; 
 	private int marginX;
@@ -30,10 +25,12 @@ public class Drawing extends JPanel {
 	public void findGoodSize() {
 		this.size =(int) this.getSize().height/20;
 	}
+	
 	public void findMargins() {
 		this.marginX = (int) ((this.getSize().width) - this.size*DIMX)/2;
 		this.marginY = (int) ((this.getSize().height) - this.size*DIMY)/2;
 	}
+	
 	public Drawing() {
 		this.DIMX = 10;
 		this.DIMY = 20;
@@ -41,6 +38,7 @@ public class Drawing extends JPanel {
 		this.marginX = 0;
 		this.marginY = 0;
 	}
+	
 	public int[][] getGridDisplay() {
 		return gridDisplay;
 	}
@@ -85,6 +83,4 @@ public class Drawing extends JPanel {
 	    }
 	    
 	}
-
-
 }
